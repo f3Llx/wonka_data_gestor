@@ -6,7 +6,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <title>Icsitter</title>
+    <title>WONKA DATABASE</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -35,16 +35,16 @@ require_once("main.php");
 		<div class="col-md-4">
         <form class="form" role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="form-group">
-            <center><img  src="img/logo.png" alt="Smiley face" ></center>
-            <h1 class="w3-center">Database Gestor</h1>
-                <input id="emailInput" name="username_log" placeholder="username" class="form-control form-control-sm" type="text" required="">
+            <center><img  src="img/logo.png" alt="wonka" class="w3-animate-left"></center>
+            <h1 class="w3-center w3-animate-right">Database Gestor</h1>
+                <input id="emailInput" name="username_log" placeholder="username" class="form-control form-control-sm w3-animate-bottom" type="text" required="">
             </div>
-            <div class="form-group">
+            <div class="form-group w3-animate-bottom">
                 <input id="passwordInput" name="password_log" placeholder="password" type="password" class="form-control form-control-sm" type="text" required="">
             </div>
-            <div class="form-group">
+            <div class="form-group w3-animate-bottom">
                 <center>
-                    <button class="btn draw-border" type="submit" name="Log_me_in">log_in</button>
+                    <button class="btn  hvr-bounce-to-top" type="submit" name="Log_me_in">log_in</button>
                 </center>
             </div>
             
