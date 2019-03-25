@@ -1,49 +1,103 @@
 <?php
 // Start the session
 session_start();
+require_once("util/db_manager.php");
+$current_user=$_SESSION["username"];
+$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `username`= '$current_user';")->fetch();
+if($user_darkMode_new['0']==0){
+  $_SESSION["current_user_theme"]="css/main.css";
+  $checked="";
+}else{
+  $_SESSION["current_user_theme"]="css/main1.css";
+  $checked="checked";  
+  
+}
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+  
     <title>WONKA DATABASE</title>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/FAVICON.png?resize=16,16&amp;format=ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link type="text/css" rel="stylesheet" href="<?php echo $_SESSION["current_user_theme"]; ?>" />
+    <link type="text/css" rel="stylesheet" href="css/Sliders.css" />
     <link type="text/css" rel="stylesheet" href="css/hover.css" />
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+
 </head>
 
 
 <?php
+
+
+
+$user_id_new = $pdo->query("SELECT `id` FROM `wonka_user` WHERE `username`= '$current_user';")->fetch();
+
+$_SESSION["current_user_id"]=$user_id_new['0'];
+echo"<br><br><br><br><br>";
+
+
 require_once("main.php");
-//$This_user_ID=$_SESSION["username"];
-//$iduser_find = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-//$user_id = $iduser_find->query("SELECT id FROM `icsitter_user` WHERE `username`='$This_user_ID';")->fetch(Pdo::FETCH_COLUMN);
-//$user_img = $iduser_find->query("SELECT username_img_url FROM `icsitter_user` WHERE `username`='$This_user_ID';")->fetch(Pdo::FETCH_COLUMN);
+
 
 
 
 
 if(empty($_SESSION["username"])){
     header("Location: index.php");
+    
 }
+
+      
+     
+        
 ?>
 
 <body>
-    <div class="w3-bar bg-navBar divs_css w3-animate-top"style="background-color:rgb(255, 131, 149)">
-        <a href="" class="w3-bar-item ">Wonka</a>
-        <span style="cursor: pointer;" href="" class="w3-bar-item hvr-bounce-to-top" type="button"  data-toggle="modal" data-target="#import_me">Importar datos <span class="glyphicon glyphicon-upload"></span></span>
-        <a class="w3-right w3-button"><?php echo $_SESSION["username"];?></i></a>
-        <a class="w3-right ">
+<nav class="navbar barra   navbar-default navbar-fixed-top" role="navigation" >
+  <div class="navbar-header"  >
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <a class="navbar-brand" href=""><span class="color_nav_logo">WONKA<span></a>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+    <li><a href=""class="w3-bar-item hvr-bounce-to-bottom nav_bar_button"  data-toggle="modal" data-target="#import_me">Importar datos <span class="glyphicon glyphicon-upload"></span></a></li>
+    
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      
+      <!-- ...Dropdown start...  -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  hvr-bounce-to-bottom nav_bar_button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php echo $_SESSION["username"];?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                <input class="w3-button" type="Submit" name="Log_me_out" value="Cerrar Sesion">
-            </form></i></a>
+                    <input class="w3-button" type="Submit" name="Log_me_out" value="Cerrar Sesion"><span class="glyphicon glyphicon-log-out"></span>
+                </form>
+                <a href=""class="w3-button"  data-toggle="modal" data-target="#settings">Configuracion <span class="glyphicon glyphicon-cog"></span></a>
+            
+        </div>
+      </li>
+      <!-- ...Dropdown end...  -->
+      <li><p>&ensp;&ensp;&ensp;</p></li>
+    </ul>
+  </div>
+</nav>
     </div>
 
     <br><br><br>
@@ -53,7 +107,7 @@ if(empty($_SESSION["username"])){
 
             <div class="col-md-12 w3-animate-zoom">
                 <center>
-                    <h1 style="color:rgb(255, 5, 162);font-size:60px" >Wonka Database </span></h1>
+                    <h1  class="tittle_h1">Wonka Database </span></h1>
                 </center>
 
                 <center>
@@ -63,10 +117,10 @@ if(empty($_SESSION["username"])){
 		                <div class="col-md-2">
 		                </div>
 		                <div class="col-md-2">
-                        <div><span id="R" style="cursor: pointer;font-size:50px" class="w3-animate-left glyphicon glyphicon-refresh hvr-grow"></div>
+                        <div class="w3-animate-right"><span id="R"  class=" rotateRefresh glyphicon glyphicon-refresh hvr-grow main_buttons"></div>
 		                </div>
 		                <div class="col-md-2">
-                        <div><span style="cursor: pointer;font-size:50px" class="w3-animate-right glyphicon glyphicon-search hvr-grow"  class="btn btn-info btn-lg " data-toggle="modal" data-target="#searchModal"></div>
+                        <div class="w3-animate-left"><span  class="w3-animate-opacity glyphicon glyphicon-search hvr-grow main_buttons"  class="btn btn-info btn-lg " data-toggle="modal" data-target="#searchModal"></div>
 		                </div>
 		                <div class="col-md-2">
 		                </div>
@@ -79,23 +133,31 @@ if(empty($_SESSION["username"])){
         </div>
         <br>
           <p class="w3-animate-left"> <?php 
-          if(count($data)==0){
-            echo"No se han encontrado resultados :(";
-          }else{
-            echo "Monstrando ".count($data)." resultados";
+          if(!empty($_SESSION["i_have_searched_bruh"])){
+            if(count($data)==0){
+              echo"No se han encontrado resultados :(";
+            }else{
+              echo "Monstrando ".count($data)." resultados";
+            }
           }
+
+          
            
           ?> </p>
-    <table class="table table-striped w3-animate-bottom">
+    <table class="table  w3-animate-bottom">
     <thead>
       <tr>
-        <th class="Nombre_t">Nombre <span id="N" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Apellido_t">Apellido <span id="A" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Email_t">Email <span id="E" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Telefono_t">Telefono <span id="T" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Dni_t">Dni <span id="D" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Birthdate_t">Nacimiento <span id="B" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
-        <th class="Comment_t">Evento <span id="C" style="cursor: pointer" class="glyphicon glyphicon-eye-close"></span></p></th>
+        <?php
+        if(!empty($_SESSION["i_have_searched_bruh"])){
+          echo"<th class='Nombre_t'>Nombre <span id='N' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Apellido_t'>Apellido <span id='A' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Email_t'>Email <span id='E' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Telefono_t'>Telefono <span id='T' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Dni_t'>Dni <span id='D' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Birthdate_t'>Nacimiento <span id='B' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
+          <th class='Comment_t'>Evento <span id='C' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>";
+        }
+        ?>
       </tr>
     </thead>
     <tbody>
@@ -215,14 +277,212 @@ if(empty($_SESSION["username"])){
         <h4 class="modal-title">Wonka IMPORT Manager</h4>
       </div>
       <div class="modal-body">
-        <form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data"><br>
-          Selecciona un archivo CSV para importar los datos:<br>
-          <input type="file" name="file" id="file"><hr>
-          <input type="submit" value="Importar!" name="import"><br>
+      <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <fieldset>
+
+          <!-- Form Name -->
+          <legend>.CSV.</legend>
+
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Selecciona modalidad</label>
+            <div class="col-md-4">
+              <select id="selectbasic" name="modality" class="form-control">
+                <option value="runners">Corredor</option>
+                <option value="juvenilerunners">Corredor Infatil</option>
+                <option value="volunteers">Voluntario</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <!-- File Button --> 
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="filebutton">Solo .CSV</label><br>
+              <div class="col-md-4">
+              <input type="file" name="file" id="file" class="w3-left"><br>
+              <input type="submit" value="importar!" name="import" class="w3-left" id="importado_click">
+              </div>
+            </div>
+          </fieldset>
         </form>
+        <!-- Loading fake animation for dummyes --> 
+      <div id="loading_fake" style="display:none;">
+      <div class="thecube">
+			<div class="cube c1"></div>
+			<div class="cube c2"></div>
+			<div class="cube c4"></div>
+      <div class="cube c3"></div>
+      <!-- end of the fakery lmao --> 
+    </div>
+		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <!-- Modal -->
+  <div id="empty" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        <section class="c-container">
+            
+            <div class="o-circle c-container__circle o-circle__sign--failure">
+              <div class="o-circle__sign"></div>  
+            </div>   
+            <p>El Archivo .csv a importar no puede estar vacio.</p>
+          </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <!-- Modal -->
+  <div id="empty_pass" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        <section class="c-container">
+            
+            <div class="o-circle c-container__circle o-circle__sign--failure">
+              <div class="o-circle__sign"></div>  
+            </div>   
+            <p>La contraseña no puede estar vacia.</p>
+          </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="insert" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Perfecto!</h4>
+      </div>
+      <div class="modal-body">
+        <section class="c-container">
+            
+            <div class="o-circle c-container__circle o-circle__sign--success">
+              <div class="o-circle__sign"></div>  
+            </div>   
+            <p><?php echo"Enhorabuena!,Se han insertado/actualizado $c datos correctamente!"; ?></p>
+          </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="successfull_pass" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Perfecto!</h4>
+      </div>
+      <div class="modal-body">
+        <section class="c-container">
+            
+            <div class="o-circle c-container__circle o-circle__sign--success">
+              <div class="o-circle__sign"></div>  
+            </div>   
+            <p>Tu contraseña se ha modificado correctamente</p>
+          </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="settings" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Configuracion</h4>
+      </div>
+      <div class="modal-body">
+      <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+          <fieldset>
+
+          <!-- Form Name -->
+          <legend>Configuracion de usuario</legend>
+
+          <!-- Password input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput">Contraseña</label>
+            <div class="col-md-4">
+              <input id="passwordinput" name="password_update_input" type="password" placeholder="Contraseña" class="form-control input-md">
+              <input class="w3-button w3-right" type="Submit" name="update_my_pass" value="OK!" >
+            </div>
+            
+          </div>
+
+          </fieldset>
+        </form>
+        <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+          <fieldset>
+
+          <!-- Form Name -->
+          
+
+          <!-- Password input-->
+          <div class="form-group">
+            
+            <label class="col-md-4 control-label" for="passwordinput">Modo Oscuro</label>
+            <div class="col-md-4">
+              <!-- Rounded switch -->
+                <label class="switch">
+                  <input type="checkbox" name="dark_me_I" value="1"<?php echo $checked; ?>>
+                  <span class="slider round"></span>
+                </label>
+                <input class="w3-button w3-right" type="Submit" name="dark_me" value="OK!" >
+            </div>
+            
+          </div>
+
+          </fieldset>
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 
@@ -264,8 +524,14 @@ $('#R').click(function() {
     location.reload();
 });
 
+$('#importado_click').click(function() {
+  $( "#loading_fake" ).show( "slow");
+  $( "#importado_click" ).hide( "slow");
+});
+
 
 </script>
+
 
 
 </html>

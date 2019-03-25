@@ -3,7 +3,7 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>WONKA DATABASE</title>
@@ -16,6 +16,7 @@ session_start();
     <link type="text/css" rel="stylesheet" href="css/hover.css" />
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="img/FAVICON.png?resize=16,16&amp;format=ico">
 </head>
 
 
@@ -105,6 +106,7 @@ require_once("main.php");
   </div>
 </div>
   <!-- Modal end -->
+
     
                 
 

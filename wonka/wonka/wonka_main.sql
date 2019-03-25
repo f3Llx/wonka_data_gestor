@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2019 a las 15:44:06
+-- Tiempo de generación: 25-03-2019 a las 15:25:42
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 5.6.40
 
@@ -3083,15 +3083,19 @@ INSERT INTO `volunteers` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`
 CREATE TABLE `wonka_user` (
   `id` int(11) NOT NULL,
   `username` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(500) COLLATE utf8_spanish_ci NOT NULL
+  `password` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `dark` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `wonka_user`
 --
 
-INSERT INTO `wonka_user` (`id`, `username`, `password`) VALUES
-(1, 'montse', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+INSERT INTO `wonka_user` (`id`, `username`, `password`, `dark`) VALUES
+(1, 'montse', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(2, 'sabrina', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
+(3, 'fernando', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(4, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0);
 
 --
 -- Índices para tablas volcadas
@@ -3153,7 +3157,7 @@ ALTER TABLE `volunteers`
 -- AUTO_INCREMENT de la tabla `wonka_user`
 --
 ALTER TABLE `wonka_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

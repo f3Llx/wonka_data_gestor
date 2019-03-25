@@ -3,14 +3,14 @@
   
   
   nav{
-    background-color:rgb(255, 131, 149) !important;
+    background-color:#A9006A !important;
   }
   
   .color_nav_logo{
-    color:black;
+    color: #FFF2FA ;
   }
   button{
-    background-color: rgb(255, 255, 255);
+    background-color: #FFA4DD ;
     border: 2px solid ;
     border-color: rgb(226, 31, 122);
   }
@@ -25,8 +25,8 @@
 
   BODY {
     margin: 0;
-    color: #3a3d40;
-    background: rgb(255, 255, 255);
+    
+    background: #210014;
     
    
   }
@@ -34,10 +34,12 @@
     color:rgb(255, 5, 162);font-size:60px
   }
   .nav_bar_button{
-    cursor: pointer;border-color: rgb(226, 31, 122);border: 0px solid ;background-color:rgb(255, 131, 149);
+    cursor: pointer;border-color: rgb(226, 31, 122);border: 0px solid ;background-color:#A9006A;
+    color:#FFF2FA  !important;
   }
   .main_buttons{
-    cursor: pointer;font-size:50px
+    cursor: pointer;font-size:50px;
+    color: #FFA4DD ;
   }
   
   *, *::before, *::after {
@@ -386,27 +388,29 @@
 /* Dark Style */
 table { 
 	width: 750px; 
-	
+  
+  
 	margin:50px auto;
 	}
 
 /* Zebra striping */
 tr:nth-of-type(odd) { 
-  background: rgb(255, 216, 222);
+  background: #A9006A;
   color:black !important; 
 	}
 
 th { 
-	background: rgb(248, 126, 145) !important; 
-	color: rgb(46, 0, 29) !important; 
+	background: rgb(255, 5, 162) !important; 
+	color: rgb(107, 0, 68) !important; 
 	font-weight: bold; 
 	}
 
 td, th { 
 	padding: 10px; 
+	
 	text-align: left; 
   font-size: 18px;
-  color:#3a3d40; ;
+  color:#FFA4DD ;
 	}
 
 /* 
@@ -434,11 +438,10 @@ only screen and (max-width: 760px),
 		left: -9999px;
 	}
 	
-	
+
 	
 	td { 
 		/* Behave  like a "row" */
-		border: none;
 		
 		position: relative;
 		padding-left: 50%; 
@@ -452,7 +455,7 @@ only screen and (max-width: 760px),
 		left: 6px;
 		width: 45%; 
 		padding-right: 10px; 
-		
+		white-space: nowrap;
 		/* Label the data */
 		content: attr(data-column);
 

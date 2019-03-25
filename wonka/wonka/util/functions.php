@@ -19,14 +19,34 @@ function insertInfo($username_p, $msg) {
 
 
 }
+function insertBULK($type_f,$Nombre_f, $Apellido_f,$Telefono_f,$Email_f,$Dni_f,$Birthdate_f,$Comment_f) {
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = 'test';
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->exec("SET NAMES utf8");("SET NAMES utf8");
+        $sql_insertCurrent_info = "INSERT IGNORE INTO $type_f(Nombre,Apellido,Telefono,Email,Dni,Birthdate,Comment) VALUES ('$Nombre_f','$Apellido_f','$Telefono_f','$Email_f','$Dni_f','$Birthdate_f','$Comment_f')";
+        $conn->exec($sql_insertCurrent_info);
+        }
+    catch(PDOException $e)
+        {
+        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
+
+
+}
 function update_my_password($username_id, $new_edited_password) {
     try {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = 'ICSITTER';
+        $dbname = 'wonka_main';
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $sql_insertCurrent_info = "UPDATE `icsitter_user` SET `password` = '$new_edited_password' WHERE `icsitter_user`.`id` = '$username_id';";
+        $sql_insertCurrent_info = "UPDATE `wonka_user` SET `password` = '$new_edited_password' WHERE `wonka_user`.`id` = '$username_id';";
         $conn->exec($sql_insertCurrent_info);
 
         }
@@ -39,14 +59,14 @@ function update_my_password($username_id, $new_edited_password) {
 
 
 }
-function update_my_color($username_id, $new_edited_color) {
+function update_my_dark($username_id, $dark_mode) {
     try {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = 'ICSITTER';
+        $dbname = 'wonka_main';
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $sql_insertCurrent_info = "UPDATE `icsitter_user` SET `username_color` = '$new_edited_color' WHERE `icsitter_user`.`id` = '$username_id';";
+        $sql_insertCurrent_info = "UPDATE `wonka_user` SET `dark` = '$dark_mode' WHERE `wonka_user`.`id` = '$username_id';";
         $conn->exec($sql_insertCurrent_info);
 
         }
