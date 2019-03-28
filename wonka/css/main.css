@@ -3,14 +3,14 @@
   
   
   nav{
-    background-color:#A9006A !important;
+    background-color:rgb(255, 131, 149) !important;
   }
   
   .color_nav_logo{
-    color: #FFF2FA ;
+    color:black;
   }
   button{
-    background-color: #FFA4DD ;
+    background-color: rgb(255, 255, 255);
     border: 2px solid ;
     border-color: rgb(226, 31, 122);
   }
@@ -25,8 +25,8 @@
 
   BODY {
     margin: 0;
-    
-    background: #210014;
+    color: #3a3d40;
+    background: rgb(255, 255, 255);
     
    
   }
@@ -34,12 +34,10 @@
     color:rgb(255, 5, 162);font-size:60px
   }
   .nav_bar_button{
-    cursor: pointer;border-color: rgb(226, 31, 122);border: 0px solid ;background-color:#A9006A;
-    color:#FFF2FA  !important;
+    cursor: pointer;border-color: rgb(226, 31, 122);border: 0px solid ;background-color:rgb(255, 131, 149);
   }
   .main_buttons{
-    cursor: pointer;font-size:50px;
-    color: #FFA4DD ;
+    cursor: pointer;font-size:50px
   }
   
   *, *::before, *::after {
@@ -388,29 +386,27 @@
 /* Dark Style */
 table { 
 	width: 750px; 
-  
-  
+	
 	margin:50px auto;
 	}
 
 /* Zebra striping */
 tr:nth-of-type(odd) { 
-  background: #A9006A;
+  background: rgb(255, 216, 222);
   color:black !important; 
 	}
 
 th { 
-	background: rgb(255, 5, 162) !important; 
-	color: rgb(107, 0, 68) !important; 
+	background: rgb(248, 126, 145) !important; 
+	color: rgb(46, 0, 29) !important; 
 	font-weight: bold; 
 	}
 
 td, th { 
 	padding: 10px; 
-	
 	text-align: left; 
   font-size: 18px;
-  color:#FFA4DD ;
+  color:#3a3d40; ;
 	}
 
 /* 
@@ -438,10 +434,11 @@ only screen and (max-width: 760px),
 		left: -9999px;
 	}
 	
-
+	
 	
 	td { 
 		/* Behave  like a "row" */
+		border: none;
 		
 		position: relative;
 		padding-left: 50%; 
@@ -455,7 +452,7 @@ only screen and (max-width: 760px),
 		left: 6px;
 		width: 45%; 
 		padding-right: 10px; 
-		white-space: nowrap;
+		
 		/* Label the data */
 		content: attr(data-column);
 
@@ -463,4 +460,57 @@ only screen and (max-width: 760px),
 		font-weight: bold;
 	}
 
+}
+.mail_button{
+  border-radius: 15px;
+  font-size: 20px;
+}
+.hvr-bounce-to-bottom2 {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.hvr-bounce-to-bottom2:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(209, 32, 121);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  border-radius: 15px;
+}
+
+.hvr-bounce-to-bottom2:hover,
+.hvr-bounce-to-bottom2:focus,
+.hvr-bounce-to-bottom2:active {
+  color: white;
+}
+
+.hvr-bounce-to-bottom2:hover:before,
+.hvr-bounce-to-bottom2:focus:before,
+.hvr-bounce-to-bottom2:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
 }

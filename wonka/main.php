@@ -6,9 +6,8 @@ require_once("util/db_manager.php");
 $_SESSION["i_have_searched_bruh"]="";
 //get messages XD  
 $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $pdo->query("SET NAMES 'utf8'");
-    $ImEmpty="";
-
+$pdo->query("SET NAMES 'utf8'");
+$ImEmpty="";
 $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
 // CONDICIONES
     if (isset($_POST['Search_me_this'])) {
@@ -34,7 +33,7 @@ $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
         $CurrentLIMIT="limit $LIMIT";
 // MULTIPLES CODICIONES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//QUERY ADULTO SI NO ESTA VACIO
+// QUERY ADULTO SI NO ESTA VACIO
             if(!empty($_POST['Adult'])){
                 
                 $Adult_Query="(SELECT * FROM `runners` WHERE `Nombre` LIKE '%$S_Nombre%' && `Dni` LIKE '%$S_Dni%' && `Apellido`LIKE '%$S_Apellido%' $CurrentLIMIT)";
@@ -91,6 +90,7 @@ $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
 //                            | |                 __/ |
 //                            |_|                |___/ 
 $data = $pdo->query("$Adult_Query $union $Volunteer_Query $union2 $Juvenile_Query $ImEmpty")->fetchAll();
+$_SESSION["data"]=$data;
 
 }
 // https://blog.fossasia.org/import-excel-file-data-in-mysql-database-using-php/
@@ -210,12 +210,116 @@ if (isset($_POST['update_my_pass'])) {
     echo $modalSuccess2;
     }
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 //https://docs.bitnami.com/aws/apps/processmakerenterprise/troubleshooting/send-mail/
 // mail https://www.w3schools.com/php/php_ref_mail.asp
+//https://www.youtube.com/watch?v=PWijPoiDqzc
 
+if (isset($_POST['email_SEND'])) {
+   // ALL POST FORM VALUES
+   //Email_Subject
+   $Email_Subject=$_POST['Email_Subject'];
+   //Mail_Event
+   $Mail_Event=$_POST['Mail_Event'];
+   //Mail_Date
+   $Mail_Date=$_POST['Mail_Date'];
+   //Mail_User_Custom_Phrase
+   $Mail_User_Custom_Phrase=$_POST['Mail_User_Custom_Phrase'];
+   //Mail_Subscribe_LINK
+   $Mail_Subscribe_LINK=$_POST['Mail_Subscribe_LINK'];
+   //Mail_Main_TEXT
+   $Mail_Main_TEXT=$_POST['Mail_Main_TEXT'];
+   //Stop_this_is_a_test
+   // the message
+   
+   
+
+require("src/Exception.php");
+require("src/PHPMailer.php");
+require("src/SMTP.php");
+
+ foreach($_SESSION["data"] as $contact){
+    $subject=$_POST['Email_Subject'];
+    require("src/Mail.php");
+    sendEmail($contact['Nombre'], $contact['Email'], $message,$subject);
+}
+}
+
+function sendEmail($email, $name,$message,$subject) {
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    //Enable SMTP debugging. 
+    $mail->SMTPDebug = 0;                               
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();            
+    //Set SMTP host name                          
+    $mail->Host = 'send.one.com';
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;                          
+    //Provide username and password     
+    $mail->Username = 'info@wonkaproducciones.com';
+    $mail->Password = 'onewillywonka';                          
+    //If SMTP requires TLS encryption then set it
+    //$mail->SMTPSecure = "tls";     
+    $mail->CharSet = 'UTF-8';                      
+    //Set TCP port to connect to 
+    $mail->Port = 2525;                                   
+    
+    $mail->From = "info@wonkaproducciones.com";
+    $mail->FromName = "WONKA PRODUCCIONES";
+    
+    $mail->smtpConnect(
+        array(
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+                "allow_self_signed" => true
+            )
+        )
+    );
+    
+    $mail->addAddress("$name","$email");
+    
+    $mail->isHTML(true);
+    
+    $mail->Subject = "$subject";
+    $mail->Body = $message;
+    $mail->AltBody = "This is the plain text version of the email content";
+    
+    if(!$mail->send()) 
+    {
+        echo " <div class='alert alert-danger alert-dismissible'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        <strong>OOPS!</strong>a habido un error :( con el usuario $name" . $mail->ErrorInfo."</div>";
+        
+    } 
+    else 
+    {
+        echo " <div class='alert alert-success alert-dismissible'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        <strong>Perfecto!</strong> El mail se envio correctamente a el usuario $name!
+      </div>";
+        
+    }
+
+ }
 
  
 
+ 
+
+ 
 
 
 

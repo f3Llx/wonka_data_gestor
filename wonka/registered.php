@@ -144,6 +144,10 @@ if(empty($_SESSION["username"])){
           
            
           ?> </p>
+          <!-- EMPIEZA BOTON EMAIL !-->
+          <?php if(!empty($_SESSION["i_have_searched_bruh"])){
+              echo"<div class='w3-right w3-animate-right'><a href=''class='mail_button hvr-bounce-to-bottom2 nav_bar_button'  data-toggle='modal' data-target='#email_this'>&nbsp; Mail&nbsp; <span class='glyphicon glyphicon-send'>&nbsp;</span></a></div>";}?>
+            <!-- ACABA BOTON EMAIL !-->
     <table class="table  w3-animate-bottom">
     <thead>
       <tr>
@@ -442,7 +446,7 @@ if(empty($_SESSION["username"])){
           <fieldset>
 
           <!-- Form Name -->
-          <legend>Configuracion de usuario</legend>
+          <legend>Configuracion de usuario </legend>
 
           <!-- Password input-->
           <div class="form-group">
@@ -460,8 +464,7 @@ if(empty($_SESSION["username"])){
           <fieldset>
 
           <!-- Form Name -->
-          
-
+      
           <!-- Password input-->
           <div class="form-group">
             
@@ -488,7 +491,73 @@ if(empty($_SESSION["username"])){
 
   </div>
 </div>
+<!-- Modal -->
+<div id="email_this" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  
+}
 
+    <!-- Modal content-->
+<div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enviar mails//Wonka Plantilla</h4>
+      </div>
+      <div class="modal-body">
+                <div class="container-fluid">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                <span class="text-info">ASUNTO</span>
+                <input type="text" name="Email_Subject"  placeholder="ASUNTO" required>
+          	<div class="row">
+          		<div class="col-md-12" >
+              <center><img align='center' alt='Image' border='0' class='center autowidth' src='https://i.imgur.com/Z3AdyGe.png' style='outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 200px; display: block;' title='Image' width='64' /></a></center>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-12">
+              <div style="background-color:pink">  
+              
+              <h3 class="text-center">
+                Evento
+              <input type="text" name="Mail_Event"  placeholder="EVENTO" required>
+          			</h3>
+          			<h3 class="text-center">
+                Fecha&nbsp;
+                <input type="text" name="Mail_Date"  placeholder="FECHA" required>
+                </h3>
+                </div>   
+                <div>
+                  <center><p class="lead">
+          			Hola, <strong>USUARIO </strong><input required type="text" name="Mail_User_Custom_Phrase" placeholder="Texto por defecto"><br></small>
+          			</p></center>
+          			<p>
+                <center><textarea required class="d-none" name="Mail_Main_TEXT"placeholder="(Texto de ejemplo'Editame')"></textarea></center>
+                </p>
+                <center><a href='http://www.corriendoporvegueta.com/' style='-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: rgb(255, 49, 227); border-radius: 24px; -webkit-border-radius: 24px; -moz-border-radius: 24px; width: auto; width: auto; border-top: 1px solid rgb(255, 49, 227); border-right: 1px solid rgb(255, 49, 227); border-bottom: 1px solid rgb(255, 49, 227); border-left: 1px solid rgb(255, 49, 227); padding-top: 5px; padding-bottom: 5px; font-family: 'Arial', Georgia, Times, 'Times New Roman', serif; text-align: center; mso-border-alt: none; word-break: keep-all;' target='_blank'><span style='padding-left:25px;padding-right:25px;font-size:14px;display:inline-block;'><span style='font-size: 16px; line-height: 32px;'><span data-mce-style='font-size: 14px;' style='font-size: 14px; line-height: 28px;'>Inscribete</span></span></span></a><br><br><br>LINK DE PAGINA DE EVENTO<br><input type="text" name="Mail_Subscribe_LINK" required></center><br><br>
+                <a href='https://www.facebook.com/wonkaproducciones/' class="w3-right" target='_blank' title='Facebook'><img alt='Facebook' height='32' src='https://i.imgur.com/hK5Q5ga.png'  title='Facebook' width='32' /></a>
+                <center><button type="submit" name="email_SEND" class="btn btn-lg btn-info" style="font-size=30px ">ENVIAR</button>
+                  <!-- Rounded switch -->
+                  
+                      <label class="switch">
+                        
+                        <input type="checkbox" name="Stop_this_is_a_test" value="1">
+                        <span class="slider round"></span>
+                      </label>
+                </center>
+                <center><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>TEST?</strong></h5></center>
+                
+                </form>
+              </div>
+          	</div>
+          </div>
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 <script>
