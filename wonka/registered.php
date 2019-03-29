@@ -507,10 +507,12 @@ if(empty($_SESSION["username"])){
                 <div class="container-fluid">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <span class="text-info">ASUNTO</span>
-                <input type="text" name="Email_Subject"  placeholder="ASUNTO" required>
+                <input type="text" name="Email_Subject"  placeholder="ASUNTO" required value="<?php echo  $_SESSION["Email_Subject"]; ?>">
           	<div class="row">
           		<div class="col-md-12" >
-              <center><img align='center' alt='Image' border='0' class='center autowidth' src='https://i.imgur.com/Z3AdyGe.png' style='outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 200px; display: block;' title='Image' width='64' /></a></center>
+              <center><img align='center' alt='Image' border='0' class='center autowidth' src='https://i.imgur.com/Z3AdyGe.png' style='outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 200px; display: block;' title='Image' width='64' /></a>
+              <input type="text" name="Mail_Photo"  placeholder="LINK DE IMAGEN" required value="<?php echo  $_SESSION["Mail_Photo"]; ?>">
+              </center>
           		</div>
           	</div>
           	<div class="row">
@@ -519,23 +521,23 @@ if(empty($_SESSION["username"])){
               
               <h3 class="text-center">
                 Evento
-              <input type="text" name="Mail_Event"  placeholder="EVENTO" required>
+              <input type="text" name="Mail_Event"  placeholder="EVENTO" required value="<?php echo  $_SESSION["Mail_Event"]; ?>">
           			</h3>
           			<h3 class="text-center">
                 Fecha&nbsp;
-                <input type="text" name="Mail_Date"  placeholder="FECHA" required>
+                <input type="text" name="Mail_Date"  placeholder="FECHA" required value="<?php echo  $_SESSION["Mail_Date"]; ?>">
                 </h3>
                 </div>   
                 <div>
                   <center><p class="lead">
-          			Hola, <strong>USUARIO </strong><input required type="text" name="Mail_User_Custom_Phrase" placeholder="Texto por defecto"><br></small>
+          			Hola, <strong>USUARIO </strong><input required type="text" name="Mail_User_Custom_Phrase" placeholder="Texto por defecto" value="<?php echo  $_SESSION["Mail_User_Custom_Phrase"]; ?>"><br></small>
           			</p></center>
           			<p>
-                <center><textarea required class="d-none" name="Mail_Main_TEXT"placeholder="(Texto de ejemplo'Editame')"></textarea></center>
+                <center><textarea required class="d-none" name="Mail_Main_TEXT"placeholder="(Texto de ejemplo'Editame')"><?php echo  $_SESSION["Mail_Main_TEXT"]; ?></textarea></center>
                 </p>
-                <center><a href='http://www.corriendoporvegueta.com/' style='-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: rgb(255, 49, 227); border-radius: 24px; -webkit-border-radius: 24px; -moz-border-radius: 24px; width: auto; width: auto; border-top: 1px solid rgb(255, 49, 227); border-right: 1px solid rgb(255, 49, 227); border-bottom: 1px solid rgb(255, 49, 227); border-left: 1px solid rgb(255, 49, 227); padding-top: 5px; padding-bottom: 5px; font-family: 'Arial', Georgia, Times, 'Times New Roman', serif; text-align: center; mso-border-alt: none; word-break: keep-all;' target='_blank'><span style='padding-left:25px;padding-right:25px;font-size:14px;display:inline-block;'><span style='font-size: 16px; line-height: 32px;'><span data-mce-style='font-size: 14px;' style='font-size: 14px; line-height: 28px;'>Inscribete</span></span></span></a><br><br><br>LINK DE PAGINA DE EVENTO<br><input type="text" name="Mail_Subscribe_LINK" required></center><br><br>
+                <center><a href='http://www.corriendoporvegueta.com/' style='-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: rgb(255, 49, 227); border-radius: 24px; -webkit-border-radius: 24px; -moz-border-radius: 24px; width: auto; width: auto; border-top: 1px solid rgb(255, 49, 227); border-right: 1px solid rgb(255, 49, 227); border-bottom: 1px solid rgb(255, 49, 227); border-left: 1px solid rgb(255, 49, 227); padding-top: 5px; padding-bottom: 5px; font-family: 'Arial', Georgia, Times, 'Times New Roman', serif; text-align: center; mso-border-alt: none; word-break: keep-all;' target='_blank'><span style='padding-left:25px;padding-right:25px;font-size:14px;display:inline-block;'><span style='font-size: 16px; line-height: 32px;'><span data-mce-style='font-size: 14px;' style='font-size: 14px; line-height: 28px;'>Inscribete</span></span></span></a><br><br><br>LINK DE PAGINA DE EVENTO<br><input type="text" name="Mail_Subscribe_LINK" required value="<?php echo  $_SESSION["Mail_Subscribe_LINK"]; ?>"></center><br><br>
                 <a href='https://www.facebook.com/wonkaproducciones/' class="w3-right" target='_blank' title='Facebook'><img alt='Facebook' height='32' src='https://i.imgur.com/hK5Q5ga.png'  title='Facebook' width='32' /></a>
-                <center><button type="submit" name="email_SEND" class="btn btn-lg btn-info" style="font-size=30px ">ENVIAR</button>
+                <center><button type="submit" name="email_SEND" class="btn btn-lg btn-info" style="font-size=30px"id="importado_click2">ENVIAR</button>
                   <!-- Rounded switch -->
                   
                       <label class="switch">
@@ -545,14 +547,20 @@ if(empty($_SESSION["username"])){
                       </label>
                 </center>
                 <center><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>TEST?</strong></h5></center>
-                
+                      <!-- Loading fake animation for dummyes --> 
+                      <div id="loading_fake2" style="display:none;">
+                        <div class="thecube">
+			                  <div class="cube c1"></div>
+			                  <div class="cube c2"></div>
+			                  <div class="cube c4"></div>
+                      <div class="cube c3"></div>
+                      <!-- end of the fakery lmao --> 
                 </form>
               </div>
           	</div>
           </div>
       <div class="modal-footer">
-      
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 
@@ -592,12 +600,14 @@ $( "#D" ).click(function() {
 $('#R').click(function() {
     location.reload();
 });
-
 $('#importado_click').click(function() {
   $( "#loading_fake" ).show( "slow");
   $( "#importado_click" ).hide( "slow");
 });
-
+$('#importado_click2').click(function() {
+  $( "#loading_fake2" ).show( "slow");
+  $( "#importado_click2" ).hide( "slow");
+});
 
 </script>
 

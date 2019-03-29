@@ -197,6 +197,7 @@ if (isset($_POST['dark_me'])) {
     header('Location: registered.php');
    } 
 }
+//UPDATE PASS
 if (isset($_POST['update_my_pass'])) {
     
     
@@ -209,53 +210,91 @@ if (isset($_POST['update_my_pass'])) {
     $modalSuccess2 = "<script> $( document ).ready(function() { $('#successfull_pass').modal({show:true});})</script>";
     echo $modalSuccess2;
     }
- }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-//https://docs.bitnami.com/aws/apps/processmakerenterprise/troubleshooting/send-mail/
-// mail https://www.w3schools.com/php/php_ref_mail.asp
-//https://www.youtube.com/watch?v=PWijPoiDqzc
+if(!isset($_SESSION["Has_been_all_a_test"])&& @$_SESSION["Has_been_all_a_test"]!=="1"){
+  // VARIABLES PARA LA TESTEASION
+  $_SESSION["Email_Subject"]="";
+  $_SESSION["Mail_Event"]="";
+  $_SESSION["Mail_Date"]="";
+  $_SESSION["Mail_User_Custom_Phrase"]="";
+  $_SESSION["Mail_Subscribe_LINK"]="";
+  $_SESSION["Mail_Main_TEXT"]="";
+  $_SESSION["Mail_Photo"]="";
+}
 
 if (isset($_POST['email_SEND'])) {
-   // ALL POST FORM VALUES
+    require("src/Exception.php");
+    require("src/PHPMailer.php");
+    require("src/SMTP.php");
+  
+    // ALL POST FORM VALUES
+
    //Email_Subject
    $Email_Subject=$_POST['Email_Subject'];
+   
    //Mail_Event
    $Mail_Event=$_POST['Mail_Event'];
+   
    //Mail_Date
    $Mail_Date=$_POST['Mail_Date'];
+   
    //Mail_User_Custom_Phrase
    $Mail_User_Custom_Phrase=$_POST['Mail_User_Custom_Phrase'];
+   
    //Mail_Subscribe_LINK
    $Mail_Subscribe_LINK=$_POST['Mail_Subscribe_LINK'];
+   
    //Mail_Main_TEXT
    $Mail_Main_TEXT=$_POST['Mail_Main_TEXT'];
+   
    //Stop_this_is_a_test
+   //Mail_Photo
+   $Mail_Photo=$_POST['Mail_Photo'];
+
+  
+ 
+   
    // the message
-   
+//-----------------------------------------------------------------------------
+   // NO ES UN TEST!
+   if(empty($_POST['Stop_this_is_a_test'])){
+    foreach($_SESSION["data"] as $contact){
+        $email="";
+        require("src/Mail.php");
+        $subject=$_POST['Email_Subject'];
+        sendEmail($contact['Nombre'], $contact['Email'], $message,$subject);
+        }
+    }
+    // TEST!!
+    if(!empty($_POST['Stop_this_is_a_test'])){
+        foreach($_SESSION["data"] as $contact){}
+        $subject=$_POST['Email_Subject'];
+        $name="48icse@gmail.com";
+        $email="Nombre";
+        require("src/Mail.php");
+        sendEmail($email, $name,$message_test,$subject);
+        $_SESSION["Has_been_all_a_test"]="1";   
+        $_SESSION["Email_Subject"]=$Email_Subject;
+        $_SESSION["Mail_Event"]=$Mail_Event;
+        $_SESSION["Mail_Date"]=$Mail_Date;
+        $_SESSION["Mail_User_Custom_Phrase"]=$Mail_User_Custom_Phrase;
+        $_SESSION["Mail_Subscribe_LINK"]=$Mail_Subscribe_LINK;
+        $_SESSION["Mail_Main_TEXT"]=$Mail_Main_TEXT;
+        $_SESSION["Mail_Photo"]=$Mail_Photo;
+
+    }
+    echo"<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>";
+   }
    
 
-require("src/Exception.php");
-require("src/PHPMailer.php");
-require("src/SMTP.php");
 
- foreach($_SESSION["data"] as $contact){
-    $subject=$_POST['Email_Subject'];
-    require("src/Mail.php");
-    sendEmail($contact['Nombre'], $contact['Email'], $message,$subject);
-}
-}
+
+ 
 
 function sendEmail($email, $name,$message,$subject) {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
