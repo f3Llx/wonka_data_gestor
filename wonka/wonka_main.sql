@@ -1,33 +1,33 @@
 -- phpMyAdmin SQL Dump
 -- version 4.8.5
--- https://www.phpmyadmin.net/
+
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2019 a las 15:25:42
+-- Tiempo de generación: 02-04-2019 a las 13:31:50
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 5.6.40
-
+--
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
+--
+--
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de datos: `wonka_main`
 --
-
+-- Base de datos: `wonka_main` --
+--
+--
 -- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `juvenilerunners`
 --
-
+-- Estructura de tabla para la tabla `juvenilerunners` --
+--
+--
 CREATE TABLE `juvenilerunners` (
   `ID` int(11) NOT NULL,
   `Nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
@@ -38,11 +38,11 @@ CREATE TABLE `juvenilerunners` (
   `Birthdate` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Comment` mediumtext COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 --
--- Volcado de datos para la tabla `juvenilerunners`
 --
-
+-- Volcado de datos para la tabla `juvenilerunners` --
+-- 
+--
 INSERT INTO `juvenilerunners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (1, 'Bran', 'Batista Navarro', '670692280', 'idainfinito@hotmail.com', '78505589b', '19/02/2015', '24h-2018-juvenile'),
 (2, 'LUCIA', 'Bravo Monferrer', '638918004', 'nankima@gmail.com', '49499374q', '02/05/2011', '24h-2018-juvenile'),
@@ -261,7 +261,7 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (30, 'José Manuel', 'Rivero Rivero', '659647426', 'info@jmriverolab.com', '43262390B', '18/12/1958', '24h-2018'),
 (31, 'Irene', 'Rodríguez Diepa', '637305461', 'ire.rd27@gmail.com', '78513302l', '11/10/1984', '24h-2018'),
 (32, 'Ramon', 'Sanchez segura', '692383646', 'imperialformacion@gmail.com', '42218308z', '04/01/1989', '24h-2018'),
-(33, 'Antonio', 'Tallarita', '+393483318016', 'antonio.tallarita@kohler.com', 'AR 3235551', '30/04/1960', '24h-2018'),
+(33, 'Antonio', 'Tallarita', '', 'antonio.tallarita@kohler.com', 'AR 3235551', '30/04/1960', '24h-2018'),
 (34, 'María José', 'Tomás de Aquino', '685670104', 'mary16enfermagem@outlook.com', 'Y3935077-k', '16/11/1958', '24h-2018'),
 (35, 'Steven', 'Wootton', '666116620', 'stevenwootton@gmail.com', 'X7028646F', '04/11/1974', '24h-2018'),
 (42, 'Francisco Javier', 'Abrante Cabrera', '665472781', 'frjaabca1968@gmail.com', '42844932A', '16/09/1968', 'Vegueta-2018'),
@@ -287,7 +287,7 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (62, 'Natalia', 'Aguiar Marrero', '679273211', 'The_natali@hotmail.com', '44727274W', '06/05/1989', 'Vegueta-2018'),
 (63, 'Ricardo', 'Aguilar Santana', '654233252', 'daniel.aguilar.eugenio@gmail.com', '42832707Z', '07/02/1966', 'Vegueta-2018'),
 (64, 'Slimane', 'Ait-Salem Duque', '680573468', 'slimane_ad@hotmail.com', '45093397B', '05/03/1975', 'Vegueta-2018'),
-(65, 'Fátima', 'Aitoutouhen Infante', '?626479307?', 'fatimainfanteinfante@gmail.com', '49407249Y', '18/06/1997', 'Vegueta-2018'),
+(65, 'Fátima', 'Aitoutouhen Infante', '626479307', 'fatimainfanteinfante@gmail.com', '49407249Y', '18/06/1997', 'Vegueta-2018'),
 (66, 'beatriz', 'alamo', '63991444', 'balamop77@gmail.com', '44320191l', '27/06/1977', 'Vegueta-2018'),
 (67, 'NELSON ARIDANE', 'ALAMO MATOS', '607828927', 'METALICASA@METALICASA.COM', '78492989S', '13/02/1979', 'Vegueta-2018'),
 (68, 'Iris Leticia', 'Álamo Moreno', '699131871', 'irisleti87@gmail.com', '44725605N', '06/11/1987', 'Vegueta-2018'),
@@ -368,7 +368,7 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (143, 'VICTOR MANUEL', 'BATISTA HERNÁNDEZ', '609007704', 'vvictor.269@gmail.com', '43758825Z', '02/03/1970', 'Vegueta-2018'),
 (144, 'Davinia', 'Batista Hernández', '650256480', 'davinia_batista@hotmail.com', '78503046k', '10/10/1982', 'Vegueta-2018'),
 (145, 'ABIAN', 'BATISTA HERNANDEZ', '630329350', 'abian_batista@yahoo.es', '78479485N', '02/06/1978', 'Vegueta-2018'),
-(146, 'Carolin', 'Becker', '00491708651911', 'carolin.becker92@gmx.de', 'LGFPY2XKZ', '10/05/1992', 'Vegueta-2018'),
+(146, 'Carolin', 'Becker', '', 'carolin.becker92@gmx.de', 'LGFPY2XKZ', '10/05/1992', 'Vegueta-2018'),
 (147, 'Juan Carlos', 'belaustegui', '692307745', 'belanayi@gmail.com', '72037976K', '07/02/1978', 'Vegueta-2018'),
 (148, 'Juliana', 'Belbey', '686810755', 'juliana.belbey@gmail.com', 'X3720915K', '12/08/1989', 'Vegueta-2018'),
 (149, 'Enrique', 'Belerda Garcia', '62630307', 'belerdapple@icloud.com', '09790526R', '11/02/1974', 'Vegueta-2018'),
@@ -434,7 +434,7 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (209, 'Iban', 'Cabrera Hernandez', '615199754', 'starletep71@hotmail.com', '45768477H', '02/09/1985', 'Vegueta-2018'),
 (210, 'Sheila', 'Cabrera López', '675806098', 'sheila.cabrera.lopez@gmail.com', '45770492d', '04/05/1984', 'Vegueta-2018'),
 (211, 'Alejandro', 'Cabrera Medina', '696856139', 'acabreramed@gmail.com', '42846709D', '03/03/1969', 'Vegueta-2018'),
-(212, 'FERNANDO DEL CRISTO', 'CABRERA MENDEZ', '619450846', 'MUNDOFIESTA_ARUCAS@HOTMAIL.COM78506219C', '78506219C', '07/05/1983', 'Vegueta-2018'),
+(212, 'FERNANDO DEL CRISTO', 'CABRERA MENDEZ', '619450846', 'MUNDOFIESTA_ARUCAS@HOTMAIL.COM', '78506219C', '07/05/1983', 'Vegueta-2018'),
 (213, 'Lisbey', 'Cabrera moreno', '661187384', 'Lizbey78@hoymail.com', '77453772f', '31/08/1978', 'Vegueta-2018'),
 (214, 'Carlos', 'Cabrera Munguia', '670772808', 'atlante_61@hotmail.com', '42799348m', '23/04/1961', 'Vegueta-2018'),
 (215, 'Tinguaro', 'Cabrera Navarro', '676404710', 'Tinwacn2@gmail.com', '78523768C', '11/09/1987', 'Vegueta-2018'),
@@ -620,7 +620,6 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (395, 'Elisa Janis', 'Feola', '600677509', 'grancanaria73@gmail.com', 'Y0932802M', '06/11/2003', 'Vegueta-2018'),
 (396, 'Raúl', 'Fernández  Ruiz', '696474310', 'raullfr@hotmail.com', '52832568G', '26/05/1973', 'Vegueta-2018'),
 (397, 'Fina', 'Fernandez dean', '665965049', 'Fifede@hotmail.com', '76965192q', '21/12/1973', 'Vegueta-2018'),
-(398, 'FAYNA', 'FERNANDEZ GARCIA', '619450846', 'MUNDOFIESTA_ARUCAS@HOTMAIL.COM', '45759643Q', '22/01/1984', 'Vegueta-2018'),
 (399, 'Jacobo', 'Fernández García', '626355713', 'faadri14@gmail.com', '44317557f', '15/01/1977', 'Vegueta-2018'),
 (400, 'jose damian', 'ferrer quintana', '677980029', 'jferqui@gmail.com', '45529430x', '16/06/1971', 'Vegueta-2018'),
 (401, 'Aaron Jesús', 'Fleitas Falcón', '664733216', 'Aaronfley@gmail.com', '45772337z', '05/01/1985', 'Vegueta-2018'),
@@ -656,10 +655,10 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (431, 'LAURA', 'GARCÍA FERRERA', '600971531', 'LGARCIA@HPSHOSPITALES.COM', '42872710C', '22/05/1973', 'Vegueta-2018'),
 (432, 'Gamaliel', 'García Fleitas', '697753231', 'gamgarfle@gmail.com', '54084783F', '02/08/1996', 'Vegueta-2018'),
 (433, 'Ramón', 'García García', '606091200', 'ramongarciagarcia44@gmail.com', '52845486-L', '29/07/1970', 'Vegueta-2018'),
-(434, 'Luis', 'García García', '615650109', 'luisgarcia_lp@hotmail.com', '44705184s', '28/04/1975', 'Vegueta-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(434, 'Luis', 'García García', '615650109', 'luisgarcia_lp@hotmail.com', '44705184s', '28/04/1975', 'Vegueta-2018'),
 (435, 'Alejandro', 'García Gil', '678847642', 'ale0687@gmail.com', '44729665R', '06/06/1987', 'Vegueta-2018'),
-(436, 'María Reyes', 'García Gómez', '653864707', 'jjlaforetgc@gmail.com', '24217017H', '12/08/1964', 'Vegueta-2018'),
+(436, 'María Reyes', 'García Gómez', '653864707', 'jjlaforetgc@gmail.com', '24217017H', '12/08/1964', 'Vegueta-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (437, 'francisca maría', 'garcia hellin', '636670552', 'isgane@gmail.com', '52825884J', '27/12/1975', 'Vegueta-2018'),
 (438, 'gustavo', 'garcia hernandez', '619356483', 'gtvgh@hotmail.com', '44309603b', '18/02/1975', 'Vegueta-2018'),
 (439, 'Guillermo', 'Garcia Leon', '609886444', 'garle70@hotmail.com', '43760315d', '12/12/1970', 'Vegueta-2018'),
@@ -1083,10 +1082,10 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (857, 'N A U T A S J A D', 'PEREZ', '616510481', 'tpq@hotmail.es', '42857694T', '11/06/1971', 'Vegueta-2018'),
 (858, 'Airon', 'Pérez', '653085231', 'aironpd@gmail.com', '45399454F', '28/01/1997', 'Vegueta-2018'),
 (859, 'Jaime', 'Pérez  Alamo', '696837774', 'perezverano@hotmail.com', '43280043T', '16/02/1972', 'Vegueta-2018'),
-(860, 'Rafael', 'Pérez Bello', '609767204', 'Rafaelperezbello2@gmail.com', '42754622Z', '07/06/1954', 'Vegueta-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(860, 'Rafael', 'Pérez Bello', '609767204', 'Rafaelperezbello2@gmail.com', '42754622Z', '07/06/1954', 'Vegueta-2018'),
 (861, 'Javier', 'Pérez Carmona', '620107343', 'javierpcarmona@gmail.com', '42872660Q', '12/09/1977', 'Vegueta-2018'),
-(862, 'Juan Francisco', 'Pérez Carreño', '648542010   928702004', 'Juan_pc1981@hotmail.com', '54081482H', '12/02/1981', 'Vegueta-2018'),
+(862, 'Juan Francisco', 'Pérez Carreño', '648542010   928702004', 'Juan_pc1981@hotmail.com', '54081482H', '12/02/1981', 'Vegueta-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (863, 'Juana Mary', 'Pérez Cerdeña', '649074056', 'antoniomiln65@gmail.com', '43668014F', '01/11/1964', 'Vegueta-2018'),
 (864, 'Pedro', 'Perez de Armas', '609725388', 'ppdearmas@hotmail.com', '44302441W', '23/10/1977', 'Vegueta-2018'),
 (865, 'Iraya', 'Pérez Domínguez', '663461490', 'iraya_78@hotmail.com', '78491691M', '13/10/1978', 'Vegueta-2018'),
@@ -1506,10 +1505,10 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (1642, 'Virginia', 'Aguiar Marrero', '618894777', 'virgi_1990@hotmail.es', '44727275A', '05/12/1990', 'MilitarRace-2018'),
 (1643, 'Cristian', 'Aguilar Escoz', '650718498', 'cristian-aguilar19@hotmail.es', '45775816C', '29/11/1991', 'MilitarRace-2018'),
 (1644, 'adam', 'akervall', '686969275', 'adam.akervall@gmail.com', 'x03719067j', '18/08/2000', 'MilitarRace-2018'),
-(1645, 'Davinia', 'Alamo Cazorla', '699357969', 'alamocazorladavinia@gmail.com', '42215694E', '01/07/2017', 'MilitarRace-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(1645, 'Davinia', 'Alamo Cazorla', '699357969', 'alamocazorladavinia@gmail.com', '42215694E', '01/07/2017', 'MilitarRace-2018'),
 (1646, 'Javier', 'Álamo Medina', '697784610', 'Javi_am96@hotmail.com', '45366750D', '16/09/1996', 'MilitarRace-2018'),
-(1647, 'Mari Carmen', 'Alemán Santana', '659807793', 'hecbolgon@hotmail.com', '44300759E', '22/10/1972', 'MilitarRace-2018'),
+(1647, 'Mari Carmen', 'Alemán Santana', '659807793', 'hecbolgon@hotmail.com', '44300759E', '22/10/1972', 'MilitarRace-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (1648, 'DARA', 'ALEMAN TAISMA', '630315577', 'DARAALEMANTAISMA@GMAIL.COM', '44720761K', '30/08/1986', 'MilitarRace-2018'),
 (1649, 'Joshua', 'Almeida Díaz', '637757487', 'joshua93x@gmail.com', '45340485x', '01/02/1993', 'MilitarRace-2018'),
 (1650, 'Elisabeth', 'Alquézar Bonfil', '681225021', 'ehly.alk@gmail.com', '25184814K', '09/06/1987', 'MilitarRace-2018'),
@@ -1916,10 +1915,10 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (2051, 'Maria Auxiliadora', 'Suarez Dominguez', '663858942', 'mauxisuadom@gmail.com', '44739546S', '18/05/1991', 'MilitarRace-2018'),
 (2052, 'Samuel', 'SUAREZ Gonzalez', '637724778', 'samusua@gmail.com', '52838344f', '16/01/1976', 'MilitarRace-2018'),
 (2053, 'HIMAR', 'SUAREZ HERNANDEZ', '635770960', 'himar4@hotmail.com', '54070722e', '08/02/1983', 'MilitarRace-2018'),
-(2054, 'Tegaday', 'Suarez Perez', '628419829', 'tegaday.jackson@hotmail.com', '7852326C', '03/12/1985', 'MilitarRace-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(2054, 'Tegaday', 'Suarez Perez', '628419829', 'tegaday.jackson@hotmail.com', '7852326C', '03/12/1985', 'MilitarRace-2018'),
 (2055, 'MOISÉS', 'Suárez Serna', '676301844', 'Mohisuaser@hotmail.com', '78492312M', '06/05/1980', 'MilitarRace-2018'),
-(2056, 'Yurena', 'Toledo Ortega', '680953544', 'yurenatoledortega@gmail.com', '44718785t', '11/01/1985', 'MilitarRace-2018'),
+(2056, 'Yurena', 'Toledo Ortega', '680953544', 'yurenatoledortega@gmail.com', '44718785t', '11/01/1985', 'MilitarRace-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (2057, 'biggles', 'tollefors', '611083003', 'biggles.tollefors@outlook.com', 'x5756521n', '30/05/2000', 'MilitarRace-2018'),
 (2058, 'JOSÉ LORENZO', 'TRUJILLO PÉREZ', '649151392', 'joselorenzotrujilloperez@gmail.com', '54092369A', '13/07/1990', 'MilitarRace-2018'),
 (2059, 'Juan Jesús', 'Trujillo Pérez', '620454242', 'Juanj.trujillop@gmail.com', '54081106X', '23/03/1983', 'MilitarRace-2018'),
@@ -2212,7 +2211,6 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (3745, 'Estrella', 'Cabrera hormiga', '618534626', 'jjcabgut@gmail.com', '43752416', '14/04/1968', 'GrandPinkRun-2018'),
 (3746, 'Amparo', 'Cabrera Navarro', '653032876', 'rosa.cabrera@aslp.org', '44307685W', '03/05/1972', 'GrandPinkRun-2018'),
 (3747, 'VANESSA', 'CABRERA RAMIREZ', '928128287', 'genyrosa72@gmail.com', '42416717R', '27/03/1984', 'GrandPinkRun-2018'),
-(3748, 'MICAELA', 'CABRERA RODRIGUEZ', '675607171', 'ALEJANDRA.CABRERA.ROSALES@GMAIL.COM', '43248534R', '10/03/1956', 'GrandPinkRun-2018'),
 (3749, 'FRANCISCA', 'CABRERA SANCHEZ', '619700186', 'Pinocalderin@hotmail.com', '43243171C', '25/04/1953', 'GrandPinkRun-2018'),
 (3750, 'Pino', 'Calderín Brito', '653945383', 'liescal31@gmail.com', '78464647', '27/09/1960', 'GrandPinkRun-2018'),
 (3751, 'Lidia Esther', 'Calderín González', '619223701', 'patriciacalderonfernandez@hotmail.com', '42864445N', '03/07/1970', 'GrandPinkRun-2018'),
@@ -2319,11 +2317,11 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (3852, 'Nazaria', 'Falcón Zerpa', '629973233', 'fragosa28@fragosa28.com', '52843769G', '23/02/1967', 'GrandPinkRun-2018'),
 (3853, 'Cecilia', 'Febles Suárez', '649931990', 'asociacioncancermama@yahoo.es', '42857569', '21/11/1969', 'GrandPinkRun-2018'),
 (3854, 'Consolación', 'fermamdez Marrero', '636042235', 'daviguaylp@hotmail.es', '42756968Z', '13/01/1956', 'GrandPinkRun-2018'),
-(3855, 'Maria Fatima', 'Fernández Carrión', '620378895', 'mferrera@toyota-canarias.es', '44311007N', '11/05/1973', 'GrandPinkRun-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(3855, 'Maria Fatima', 'Fernández Carrión', '620378895', 'mferrera@toyota-canarias.es', '44311007N', '11/05/1973', 'GrandPinkRun-2018'),
 (3856, 'MARTA', 'FERRERA ALONSO', '629050731', 'omarjesus1999@gmail.com', '78496763V', '10/12/1978', 'GrandPinkRun-2018'),
 (3857, 'Omar', 'ferrera ojeda', '692188095', 'nereidaguillen.ng@gmail.com', '45374969v', '17/05/1999', 'GrandPinkRun-2018'),
-(3858, 'OLGA', 'FIERRO RODRIGUEZ', '639418050', 'mariafs52@hotmail.es', '42852530B', '29/09/1968', 'GrandPinkRun-2018'),
+(3858, 'OLGA', 'FIERRO RODRIGUEZ', '639418050', 'mariafs52@hotmail.es', '42852530B', '29/09/1968', 'GrandPinkRun-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (3859, 'Dolores', 'Franco Perdomo', '636340467', 'verok.fs.80@gmail.com', '43640776R', '15/02/1960', 'GrandPinkRun-2018'),
 (3860, 'VERÓNICA', 'FREIRE SANISIDRO', '649334837', 'borbemi@hotmail.com', '71506615 Y', '08/01/1980', 'GrandPinkRun-2018'),
 (3861, 'Manuel', 'Gago Torrado', '661185063', 'fgalante@estudiossociales-geas7.com', '35433609Q', '28/03/1959', 'GrandPinkRun-2018'),
@@ -2725,11 +2723,11 @@ INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `
 (4257, 'Attagora', 'Sánchez Guedez', '646492733', 'anasg2303@gmail.com', '54082794L', '25/01/1987', 'GrandPinkRun-2018'),
 (4258, 'Rosen', 'Sánchez Olmo', '627846464', 'Eri_8@hotmail.com', '45350662K', '21/08/2003', 'GrandPinkRun-2018'),
 (4259, 'Manuel', 'Sánchez Santana', '627846464', 'benahoare28@hotmail.com', '43667370F', '26/11/1966', 'GrandPinkRun-2018'),
-(4260, 'JUANA  ROSA', 'SANCHEZ SUAREZ', '679828878', 'esthersilia@hotmail.com', '43655776', '21/05/1965', 'GrandPinkRun-2018');
-INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
+(4260, 'JUANA  ROSA', 'SANCHEZ SUAREZ', '679828878', 'esthersilia@hotmail.com', '43655776', '21/05/1965', 'GrandPinkRun-2018'),
 (4261, 'Esther', 'Sanchez Yanez', '696742256', 'alejandra.sanjuan@ulpgc.es', '78471779B', '19/08/1969', 'GrandPinkRun-2018'),
 (4262, 'Alejandra', 'Sanjuan Hernan-Perez', '616478889', 'marlinablue@gmail.com', '51339591A', '30/08/1958', 'GrandPinkRun-2018'),
-(4263, 'Helena Haydeé', 'Sansiviero Santos', '601009918', 'carmensantanaramirez11@gmail.com', '42852570M', '19/12/1958', 'GrandPinkRun-2018'),
+(4263, 'Helena Haydeé', 'Sansiviero Santos', '601009918', 'carmensantanaramirez11@gmail.com', '42852570M', '19/12/1958', 'GrandPinkRun-2018');
+INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES
 (4264, 'Caridad', 'Santana  Naranjo', '679285464', 'achg66@gmail.com', '45762511D', '19/02/1982', 'GrandPinkRun-2018'),
 (4265, 'MARIA TERESA', 'SANTANA ESPINO', '651947011', 'tonisan.as@gmail.com', '42758354C', '09/09/1954', 'GrandPinkRun-2018'),
 (4266, 'M.Angeles', 'Santana Felipe', '626959298', 'desire_sf@hotmail.com', '52842458G', '02/10/1964', 'GrandPinkRun-2018'),
@@ -3092,9 +3090,9 @@ CREATE TABLE `wonka_user` (
 --
 
 INSERT INTO `wonka_user` (`id`, `username`, `password`, `dark`) VALUES
-(1, 'montse', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(1, 'montse', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
 (2, 'sabrina', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
-(3, 'fernando', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(3, 'fernando', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
 (4, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0);
 
 --

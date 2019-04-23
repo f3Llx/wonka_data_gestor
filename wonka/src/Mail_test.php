@@ -1,5 +1,6 @@
 <?php 
-$message="<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'><html xmlns='http://www.w3.org/1999/xhtml'><head><!--[if gte mso 15]>
+
+$message_test="<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'><html xmlns='http://www.w3.org/1999/xhtml'><head><!--[if gte mso 15]>
     <xml>
         <o:OfficeDocumentSettings>
         <o:AllowPNG/>
@@ -24,7 +25,7 @@ $message="<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w
     <table align='center' border='0' cellspacing='0' cellpadding='0' width='100%'>
     <![endif]--><tbody class='mcnBoxedTextBlockOuter'><tr><td valign='top' class='mcnBoxedTextBlockInner' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly'><!--[if gte mso 9]>
             <td align='center' valign='top' '>
-            <![endif]--><table align='left' border='0' cellpadding='0' cellspacing='0' width='100%' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;min-width:100%;mso-table-lspace:0;mso-table-rspace:0' class='mcnBoxedTextContentContainer'><tbody><tr><td style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padding-bottom:9px;padding-left:18px;padding-right:18px;padding-top:9px'><table border='0' cellspacing='0' class='mcnTextContentContainer' width='100%' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#E2187A;border-collapse:collapse;min-width:100%!important;mso-table-lspace:0;mso-table-rspace:0'><tbody><tr><td valign='top' class='mcnTextContent' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#F2F2F2;font-family:Helvetica;font-size:14px;font-weight:400;line-height:150%;mso-line-height-rule:exactly;padding:18px;text-align:center;word-break:break-word'><span style='font-size:19px'><strong>Hola ".$contact['Nombre'].",   $Mail_User_Custom_Phrase</strong></span></td></tr></tbody></table></td></tr></tbody></table><!--[if gte mso 9]>
+            <![endif]--><table align='left' border='0' cellpadding='0' cellspacing='0' width='100%' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;min-width:100%;mso-table-lspace:0;mso-table-rspace:0' class='mcnBoxedTextContentContainer'><tbody><tr><td style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padding-bottom:9px;padding-left:18px;padding-right:18px;padding-top:9px'><table border='0' cellspacing='0' class='mcnTextContentContainer' width='100%' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#E2187A;border-collapse:collapse;min-width:100%!important;mso-table-lspace:0;mso-table-rspace:0'><tbody><tr><td valign='top' class='mcnTextContent' style='-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#F2F2F2;font-family:Helvetica;font-size:14px;font-weight:400;line-height:150%;mso-line-height-rule:exactly;padding:18px;text-align:center;word-break:break-word'><span style='font-size:19px'><strong>Hola $email,   $Mail_User_Custom_Phrase</strong></span></td></tr></tbody></table></td></tr></tbody></table><!--[if gte mso 9]>
             </td>
             <![endif]--><!--[if gte mso 9]>
             </tr>
@@ -70,6 +71,7 @@ $message="<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w
                     </table>
                     <![endif]--></td></tr></tbody></table></center></body></html>
     ";
+
 
 
 ?>

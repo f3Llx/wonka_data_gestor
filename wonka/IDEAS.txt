@@ -1,42 +1,56 @@
 hoy: "MODO OSCURO"
 :)
-
-
-
-
-
-
-
-
-
-
-// It really boils down to changing few directives in php.ini and sendmail.ini
-
-Changes required in sendmail.ini
-
-smtp_server=smtp.gmail.com
-smtp_port=587
-error_logfile=error.log
-debug_logfile=debug.log
-auth_username=your-gmail-id@gmail.com
-auth_password=your-gmail-password
-force_sender=your-gmail-id@gmail.com
-
-Changes required in php.ini
-
-SMTP=smtp.gmail.com
-smtp_port=587
-sendmail_from = your-gmail-id@gmail.com
-sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
-;sendmail_path = "C:\xampp\mailtodisk\mailtodisk.exe"
-
-
-
-https://blog.mailtrap.io/2019/01/03/php-email-sending/
-
-
-
+    _________
+    / ======= \
+   / __________\
+  | ___________ |
+  | | -       | |
+  | |         | |
+  | |_________| |________________________
+  \=____________/   WONKA DATABASE!      )
+  / """"""""""" \   ----------          /
+ / ::::::::::::: \                  =D-'
+(_________________)
+----------------------------------------------------------------------------------------------------------------
+// It really boils down to changing few directives in php.ini and sendmail.ini                                  |
+                                                                                                                |
+Changes required in sendmail.ini                                                                                |
+                                                                                                                |
+smtp_server=smtp.gmail.com                                                                                      |
+smtp_port=587                                                                                                   |
+error_logfile=error.log                                                                                         |
+debug_logfile=debug.log                                                                                         |
+auth_username=your-gmail-id@gmail.com                                                                           |
+auth_password=your-gmail-password                                                                               |
+force_sender=your-gmail-id@gmail.com                                                                            |
+                                                                                                                |
+Changes required in php.ini                                                                                     |
+                                                                                                                |
+SMTP=smtp.gmail.com                                                                                             |
+smtp_port=587                                                                                                   |
+sendmail_from = your-gmail-id@gmail.com                                                                         |
+sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"                                                         |
+;sendmail_path = "C:\xampp\mailtodisk\mailtodisk.exe"                                                           |
+                                                                                                                |
+                                                                                                                |
+                                                                                                                |
+----------------------------------------------------------------------------------------------------------------
+                                                                                                                |
+                                ~+                                                                              |
+                                                                                                                |
+                                         *       +                                                              |
+                                   '                  |                                                         |
+                               ()    .-.,="``"=.    - o -                                                       |
+                                     '=/_       \     |                                                         |
+                                  *   |  '=._    |                                                              |
+                                       \     `=./`,        '                                                    |
+                                    .   '=.__.=' `='      *                                                     |
+                           +                         +                                                          |
+                                O      *        '       .                                                       |
+                                                                                                                |
+-----------------------------------------------------------------------------------------------------------------
 wonkamaster1234
+wonkaadmin1234
 48icse@tutanota.com
 2255
 291c
@@ -54,7 +68,19 @@ b34e
 fc0c
 87f6
 911e
-
+-----------------------------------------------------------------------------------------------------------------
 INSERT INTO `runners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES (NULL, 'pepa', 'perez', 'nulo', 'dusu@network-source.com', '33234234h', '123123', '24h');
 INSERT INTO `volunteers` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES (NULL, 'jose', 'perez', 'nulo', '48icse@gmail.com', '33234234h', '123123', '24h');
 INSERT INTO `juvenilerunners` (`ID`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Dni`, `Birthdate`, `Comment`) VALUES (NULL, 'maria', 'perez', 'nulo', 'Entlead82@teleworm.us', '33234234h', '123123', '24h');
+-----------------------------------------------------------------------------------------------------------------
+=================================================================================================================
+// Para la tienda https://codyhouse.co/gem/product-builder *\_SHOP CUSTOMIZER_/*
+//
+// Presupuesto.__--__pc-pcpart-picker
+https://pcpartpicker.com/list/gwCx3b
+
+
+https://stackoverflow.com/questions/23497876/using-phpmailer-and-amazon-ses
+
+
+

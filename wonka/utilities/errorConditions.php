@@ -5,20 +5,20 @@ $username_error = validate_name($_POST['Username']);
 $surname_error = validate_surname($_POST['Surname']);
 $email_error = validate_email($_POST['Email']);
 $modalScript = "<script>
-$( document ).ready(function() {
-    $('#modal1').modal({show:true});
-});
-</script>";
+    $( document ).ready(function() {
+        $('#modal1').modal({show:true});
+    });
+    </script>";
 $modalScript2 = "<script>
-$( document ).ready(function() {
-    $('#register').modal({show:true});
-});
-</script>";
+    $( document ).ready(function() {
+        $('#register').modal({show:true});
+    });
+    </script>";
 $modalScript3 = "<script>
-$( document ).ready(function() {
-    $('#register_succesful').modal({show:true});
-});
-</script>";
+    $( document ).ready(function() {
+        $('#register_succesful').modal({show:true});
+    });
+    </script>";
 
 
 
@@ -55,7 +55,8 @@ $( document ).ready(function() {
         global $errorCount;
         $errorCount = $errorCount +1;
     }
-     //condicion email
+     
+    //condicion email
     if($email_error == 1){
         global $email_err;
         $email_err = 'Your e-mail must not be empty';
@@ -78,12 +79,13 @@ $( document ).ready(function() {
         register_me($name_r,$lastname_r,$username_r,$email_r,$password_r);
         echo $modalScript3; 
     }
+    
     // inyeccion de scripts si existen errores
     if($errorCount>0){
         echo $modalScript;
         
     }
-    
+
    if($countqgenial['LOG']==1){
     $username_err = 'This username is in use!';
     echo $modalScript;

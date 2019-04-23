@@ -133,7 +133,7 @@
   
   /*--shadow--*/
   .o-circle__sign--success .o-circle__sign::after {
-    background: rgb(236, 75, 155);
+    background: rgba(236, 75, 155, 0);
   }
    
   
@@ -161,7 +161,7 @@
   
   /*--shadow--*/
   .o-circle__sign--failure .o-circle__sign::after {
-     background: rgb(236, 75, 155);
+     background: rgba(236, 75, 155, 0);
   }
   
   
@@ -198,9 +198,7 @@
     to { opacity: 1; }
   }
   
-  @keyframes set-overflow {
-    to { overflow: hidden; }
-  }
+
   
   
   
@@ -388,7 +386,7 @@
 /* Dark Style */
 table { 
 	width: 750px; 
-  
+  table-layout: fixed;
   
 	margin:50px auto;
 	}
@@ -406,8 +404,8 @@ th {
 	}
 
 td, th { 
-	padding: 10px; 
-	
+	padding: 4px; 
+	word-wrap: break-word;
 	text-align: left; 
   font-size: 18px;
   color:#FFA4DD ;

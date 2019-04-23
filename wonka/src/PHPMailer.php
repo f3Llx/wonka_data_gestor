@@ -109,7 +109,7 @@ class PHPMailer
     public $Sender = '';
 
     /**
-     * The Subject of the message.
+     * sujeto del mensaje.
      *
      * @var string
      */

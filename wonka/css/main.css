@@ -131,7 +131,7 @@
   
   /*--shadow--*/
   .o-circle__sign--success .o-circle__sign::after {
-    background: rgb(236, 75, 155);
+    background: rgba(236, 75, 155, 0);
   }
    
   
@@ -159,7 +159,7 @@
   
   /*--shadow--*/
   .o-circle__sign--failure .o-circle__sign::after {
-     background: rgb(236, 75, 155);
+     background: rgba(236, 75, 155, 0);
   }
   
   
@@ -196,9 +196,7 @@
     to { opacity: 1; }
   }
   
-  @keyframes set-overflow {
-    to { overflow: hidden; }
-  }
+  
   
   
   
@@ -386,7 +384,7 @@
 /* Dark Style */
 table { 
 	width: 750px; 
-	
+	table-layout: fixed;
 	margin:50px auto;
 	}
 
@@ -403,10 +401,11 @@ th {
 	}
 
 td, th { 
-	padding: 10px; 
+	padding: 4px; 
 	text-align: left; 
   font-size: 18px;
-  color:#3a3d40; ;
+  color:#3a3d40;
+  word-wrap: break-word;
 	}
 
 /* 
@@ -441,7 +440,7 @@ only screen and (max-width: 760px),
 		border: none;
 		
 		position: relative;
-		padding-left: 50%; 
+		padding-left: 25%; 
 	}
 
 	td:before { 

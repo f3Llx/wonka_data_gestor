@@ -4,11 +4,13 @@
 require_once("util/functions.php");  
 require_once("util/db_manager.php"); 
 $_SESSION["i_have_searched_bruh"]="";
+
 //get messages XD  
 $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $pdo->query("SET NAMES 'utf8'");
 $ImEmpty="";
 $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
+
 // CONDICIONES
     if (isset($_POST['Search_me_this'])) {
     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -31,6 +33,8 @@ $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
     //LINEAS
         $LIMIT=$_POST['RowNumber'];
         $CurrentLIMIT="limit $LIMIT";
+        if(count($data>500)){$blockMoreThan500="style='display:none';";
+            }
 // MULTIPLES CODICIONES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // QUERY ADULTO SI NO ESTA VACIO
@@ -96,10 +100,10 @@ $_SESSION["data"]=$data;
 // https://blog.fossasia.org/import-excel-file-data-in-mysql-database-using-php/
 
 $modalScript7 = "<script>
-$( document ).ready(function() {
-    $('#login_failed').modal({show:true});
-});
-//</script>";
+    $( document ).ready(function() {
+        $('#login_failed').modal({show:true});
+    });
+    //</script>";
 
 //_____                     _                              
 //(____ \       _           (_)                        _    
@@ -222,7 +226,11 @@ if(!isset($_SESSION["Has_been_all_a_test"])&& @$_SESSION["Has_been_all_a_test"]!
   $_SESSION["Mail_Main_TEXT"]="";
   $_SESSION["Mail_Photo"]="";
 }
-
+//                            _ _ 
+//  ___       _ __ ___   __ _(_) |
+// / _ \_____| '_ ` _ \ / _` | | |
+//|  __/_____| | | | | | (_| | | |
+// \___|     |_| |_| |_|\__,_|_|_|
 if (isset($_POST['email_SEND'])) {
     require("src/Exception.php");
     require("src/PHPMailer.php");
@@ -257,22 +265,27 @@ if (isset($_POST['email_SEND'])) {
    
    // the message
 //-----------------------------------------------------------------------------
-   // NO ES UN TEST!
+   
+    // NO ES UN TEST!
    if(empty($_POST['Stop_this_is_a_test'])){
     foreach($_SESSION["data"] as $contact){
         $email="";
         require("src/Mail.php");
         $subject=$_POST['Email_Subject'];
         sendEmail($contact['Nombre'], $contact['Email'], $message,$subject);
+        if ($contact > 0 && $contact % 10 == 0) {
+            sleep(310);
+        }
         }
     }
+
     // TEST!!
     if(!empty($_POST['Stop_this_is_a_test'])){
         foreach($_SESSION["data"] as $contact){}
         $subject=$_POST['Email_Subject'];
-        $name="48icse@gmail.com";
-        $email="Nombre";
-        require("src/Mail.php");
+        $name="test.wonka.sample@gmail.com";
+        $email="Wonka";
+        require("src/Mail_test.php");
         sendEmail($email, $name,$message_test,$subject);
         $_SESSION["Has_been_all_a_test"]="1";   
         $_SESSION["Email_Subject"]=$Email_Subject;
@@ -282,6 +295,9 @@ if (isset($_POST['email_SEND'])) {
         $_SESSION["Mail_Subscribe_LINK"]=$Mail_Subscribe_LINK;
         $_SESSION["Mail_Main_TEXT"]=$Mail_Main_TEXT;
         $_SESSION["Mail_Photo"]=$Mail_Photo;
+        if ($contact > 0 && $contact % 10 == 0) {
+            sleep(310);
+        }
 
     }
     echo"<script>
@@ -293,9 +309,8 @@ if (isset($_POST['email_SEND'])) {
    
 
 
-
  
-
+// Envia emails.
 function sendEmail($email, $name,$message,$subject) {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     //Enable SMTP debugging. 
@@ -338,14 +353,14 @@ function sendEmail($email, $name,$message,$subject) {
     
     if(!$mail->send()) 
     {
-        echo " <div class='alert alert-danger alert-dismissible'>
+        echo "<div class='alert alert-danger alert-dismissible'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
         <strong>OOPS!</strong>a habido un error :( con el usuario $name" . $mail->ErrorInfo."</div>";
         
     } 
     else 
     {
-        echo " <div class='alert alert-success alert-dismissible'>
+        echo "<div class='alert alert-success alert-dismissible'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
         <strong>Perfecto!</strong> El mail se envio correctamente a el usuario $name!
       </div>";

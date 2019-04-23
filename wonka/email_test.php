@@ -45,7 +45,7 @@ function sendEmail($email, $name,$message) {
     $mail->Password = 'onewillywonka';                          
     //If SMTP requires TLS encryption then set it
     //$mail->SMTPSecure = "tls";                           
-    //Set TCP port to connect to 
+    //Set TCP port to connect
     $mail->Port = 2525;                                   
     
     $mail->From = "info@wonkaproducciones.com";

@@ -1,33 +1,18 @@
 <?php
-function insertInfo($username_p, $msg) {
-    try {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = 'ICSITTER';
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $sql_insertCurrent_info = "INSERT INTO ICSITTER_message (userid, msg, msg_date) VALUES ('$username_p', '$msg', now())";
-        $conn->exec($sql_insertCurrent_info);
 
-        }
-    catch(PDOException $e)
-        {
-        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
-        }
-    
-    $conn = null;
+                                 //[¨-___-*\__|FUNCIONES|__/*-___-¨]\\
+                                //___________________________________\\
 
-
-}
+//Inserta informacion a travez de un archivo csv.
 function insertBULK($type_f,$Nombre_f, $Apellido_f,$Telefono_f,$Email_f,$Dni_f,$Birthdate_f,$Comment_f) {
     try {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = 'test';
+        $dbname = 'wonka_main';
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->exec("SET NAMES utf8");("SET NAMES utf8");
-        $sql_insertCurrent_info = "INSERT IGNORE INTO $type_f(Nombre,Apellido,Telefono,Email,Dni,Birthdate,Comment) VALUES ('$Nombre_f','$Apellido_f','$Telefono_f','$Email_f','$Dni_f','$Birthdate_f','$Comment_f')";
+        $sql_insertCurrent_info = "INSERT INTO $type_f(Nombre,Apellido,Telefono,Email,Dni,Birthdate,Comment) VALUES ('$Nombre_f','$Apellido_f','$Telefono_f','$Email_f','$Dni_f','$Birthdate_f','$Comment_f')";
         $conn->exec($sql_insertCurrent_info);
         }
     catch(PDOException $e)
@@ -36,9 +21,8 @@ function insertBULK($type_f,$Nombre_f, $Apellido_f,$Telefono_f,$Email_f,$Dni_f,$
         }
     
     $conn = null;
-
-
 }
+//Actualiza la contraseña.
 function update_my_password($username_id, $new_edited_password) {
     try {
         $servername = "localhost";
@@ -56,9 +40,8 @@ function update_my_password($username_id, $new_edited_password) {
         }
     
     $conn = null;
-
-
 }
+//Actualiza el modo oscuro.
 function update_my_dark($username_id, $dark_mode) {
     try {
         $servername = "localhost";
@@ -76,49 +59,6 @@ function update_my_dark($username_id, $dark_mode) {
         }
     
     $conn = null;
-
-
-}
-function update_my_img($username_id, $new_edited_img) {
-    try {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = 'ICSITTER';
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $sql_insertCurrent_info = "UPDATE `icsitter_user` SET `username_img_url` = '$new_edited_img' WHERE `icsitter_user`.`id` = '$username_id';";
-        $conn->exec($sql_insertCurrent_info);
-
-        }
-    catch(PDOException $e)
-        {
-        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
-        }
-    
-    $conn = null;
-
-
-}
-
-
-function register_me($name_r,$lastname_r,$username_r,$email_r,$password_r) {
-    try {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = 'ICSITTER';
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $sql_insertRegister_info = "INSERT INTO ICSITTER_user (name, lastname, username,email,password) VALUES ('$name_r','$lastname_r','$username_r','$email_r','$password_r')";
-        $conn->exec($sql_insertRegister_info);
-
-        }
-    catch(PDOException $e)
-        {
-        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
-        }
-    
-    $conn = null;
-
 
 }
 
@@ -155,9 +95,8 @@ function validate_email($Email){
       
     }
 }
-
+// Le añade encriptado a una variable ("para las contraseñas")
 function hash_my_thing($hashedPassword){
     $hashedPassword=sha1($hashedPassword);
     return $hashedPassword;
 }
-    
