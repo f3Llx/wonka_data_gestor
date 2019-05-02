@@ -22,6 +22,27 @@ function insertBULK($type_f,$Nombre_f, $Apellido_f,$Telefono_f,$Email_f,$Dni_f,$
     
     $conn = null;
 }
+// desuscribe el dude
+function Unsuscribe_user($Unsuscribing_user_mail) {
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = 'wonka_main';
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $sql_insertCurrent_info = "DELETE FROM runners WHERE `Email`='$Unsuscribing_user_mail';
+                                   DELETE  FROM juvenilerunners WHERE `Email`='$Unsuscribing_user_mail';
+                                   DELETE  FROM volunteers WHERE `Email`='$Unsuscribing_user_mail';";
+        $conn->exec($sql_insertCurrent_info);
+
+        }
+    catch(PDOException $e)
+        {
+        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
+}
 //Actualiza la contraseña.
 function update_my_password($username_id, $new_edited_password) {
     try {
@@ -100,3 +121,5 @@ function hash_my_thing($hashedPassword){
     $hashedPassword=sha1($hashedPassword);
     return $hashedPassword;
 }
+
+

@@ -13,3 +13,4 @@ function console_log ($msg){
 function js_alert ($msg){
     echo '<script>alert('.$msg.')</script>';
 }
+

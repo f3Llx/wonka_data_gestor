@@ -1,6 +1,6 @@
 hoy: "MODO OSCURO"
 :)
-    _________
+     _________
     / ======= \
    / __________\
   | ___________ |
@@ -81,6 +81,26 @@ https://pcpartpicker.com/list/gwCx3b
 
 
 https://stackoverflow.com/questions/23497876/using-phpmailer-and-amazon-ses
+
+
+<script>
+$(function() {
+$( "#draggable" ).draggable();
+$( "#droppable" ).droppable({
+drop: function( event, ui ) {
+$( this )
+.addClass( "ui-state-highlight" )
+.find( "Local_ID" )
+.html( "Dropped!" );
+.addClass( "ui-state-highlight" )
+.find( "Local_ID" )
+.html( "Dropped!" );
+}
+});
+});
+Notas Personales:
+-Añadir boton de borrado.
+
 
 
 

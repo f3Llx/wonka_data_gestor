@@ -27,6 +27,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="<?php echo $_SESSION["current_user_theme"]; ?>" />
     <link type="text/css" rel="stylesheet" href="css/Sliders.css" />
+    <link type="text/css" rel="stylesheet" href="css/loader.css" />
     <link type="text/css" rel="stylesheet" href="css/hover.css" />
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -45,8 +46,17 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
         header("Location: index.php");   
     } 
 ?>
-
+<script>
+window.addEventListener("load", function(){
+	var load_screen = document.getElementById("load_screen");
+	
+  document.body.removeChild(load_screen);
+  
+});
+</script>
+<div id="load_screen" ><div id="loading"class="w3-animate-opacity">Cargando...<div class="lds-roller w3-right"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>
 <body>
+
 <nav class="navbar barra   navbar-default navbar-fixed-top" role="navigation" >
   <div class="navbar-header"  >
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -154,12 +164,24 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
         <tr> 
             <td class="Nombre_a"> <?=$row['Nombre']?></td>
             <td class="Apellido_a"> <?=$row['Apellido']?></td>
-            <td class="Email_a"> <?=$row['Email']?></td>
+            <td class="Email_a"> <?=$row['Email']?><div class="dropdown"></td>
             <td class="Telefono_a"> <?=$row['Telefono']?></td>
             <td class="Dni_a"> <?=$row['Dni']?></td>
             <td class="Birthdate_a"> <?=$row['Birthdate']?></td>
-            <td class="Comment_a"> <?=$row['Comment']?></td>
-        </tr> 
+            <td class="Comment_a"> <?=$row['Comment']?><br>
+                  <div class="dropdown">
+                    <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown">Opciones
+                     <span class="caret"></span></button>
+                       <ul class="dropdown-menu">
+                         <li><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                         <input type="hidden" id="custId" name="Unsuscribe_user_mail" value="<?=$row['Email']?>">
+                          <input class="w3-button" type="Submit" name="Unsuscribe" value="Dar de baja"></span>
+                          </form>
+                         
+                       </ul>
+                    </div>
+            </td>
+          </tr> 
      <?php } ?> 
     </tbody>
     </table>
@@ -394,6 +416,30 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
   </div>
 </div>
 <!-- Modal -->
+<div id="unsuscribe" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Perfecto!</h4>
+      </div>
+      <div class="modal-body">
+        <section class="c-container">
+            <div class="o-circle c-container__circle o-circle__sign--success">
+              <div class="o-circle__sign"></div>  
+            </div>   
+            <p>Se ha dado de baja al usuario!</p>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
 <div id="successfull_pass" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -453,7 +499,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
           <!-- Password input-->
           <div class="form-group">
             
-            <label class="col-md-4 control-label" for="passwordinput">Modo Oscuro</label>
+            <label class="col-md-4 control-label" for="passwordinput">Modo Oscuro (Beta)</label>
             <div class="col-md-4">
               <!-- Rounded switch -->
                 <label class="switch">

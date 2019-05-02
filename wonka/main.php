@@ -104,7 +104,7 @@ $modalScript7 = "<script>
         $('#login_failed').modal({show:true});
     });
     //</script>";
-
+    
 //_____                     _                              
 //(____ \       _           (_)                        _    
 // _   \ \ ____| |_  ____    _ ____  ____   ___   ____| |_  
@@ -183,6 +183,19 @@ if (isset($_POST['Log_me_out'])) {
     // destroy the session 
     session_destroy(); 
     header('Location: index.php');
+
+
+}
+// Unsuscribe
+if (isset($_POST['Unsuscribe'])) {
+    $Unsuscribing_user_mail=$_POST['Unsuscribe_user_mail'];
+    Unsuscribe_user($Unsuscribing_user_mail);
+
+    echo"<script>
+    $( document ).ready(function() {
+        $('#unsuscribe').modal({show:true});
+    });
+    //</script>";
 
 
 }
@@ -313,21 +326,20 @@ if (isset($_POST['email_SEND'])) {
 // Envia emails.
 function sendEmail($email, $name,$message,$subject) {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    //Enable SMTP debugging. 
+    //debug para errorsillos
     $mail->SMTPDebug = 0;                               
-    //Set PHPMailer to use SMTP.
+    // es stmp? mmmh?...
     $mail->isSMTP();            
-    //Set SMTP host name                          
+    //el host                           
     $mail->Host = 'send.one.com';
-    //Set this to true if SMTP host requires authentication to send email
+    // necesita autenticarse-- por defecto le pongo true
     $mail->SMTPAuth = true;                          
-    //Provide username and password     
+    //el user y la pass 
     $mail->Username = 'info@wonkaproducciones.com';
     $mail->Password = 'onewillywonka';                          
-    //If SMTP requires TLS encryption then set it
-    //$mail->SMTPSecure = "tls";     
+     
     $mail->CharSet = 'UTF-8';                      
-    //Set TCP port to connect to 
+    //esto es el puerto 
     $mail->Port = 2525;                                   
     
     $mail->From = "info@wonkaproducciones.com";

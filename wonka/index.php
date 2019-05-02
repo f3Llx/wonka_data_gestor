@@ -22,8 +22,6 @@ session_start();
 
 <?php
 require_once("main.php");
-
-
 ?>
 
 <body>
@@ -106,12 +104,6 @@ require_once("main.php");
   </div>
 </div>
   <!-- Modal end -->
-
-    
-                
-
-
-
 </body>
 
 
