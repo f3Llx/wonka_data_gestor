@@ -14,6 +14,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
     $checked="checked";
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,11 +59,9 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
       <span class="icon-bar"></span>
     </button>    
   </div>
-  <a class="navbar-brand" href=""><span class="color_nav_logo">WONKA<span></a>
+  <a class="navbar-brand" href="registered.php"><span class="color_nav_logo">WONKA<span></a>
   <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav navbar-left">
-    <li><a href=""class="w3-bar-item hvr-bounce-to-bottom nav_bar_button"  data-toggle="modal" data-target="#import_me">Importar datos <span class="glyphicon glyphicon-upload"></span></a></li>
-    </ul>
+    
     <ul class="nav navbar-nav navbar-right">
       <!-- ...Dropdown start...  -->
       <li class="nav-item dropdown">
@@ -83,7 +82,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
     </div>
   </nav>
 </div>
-    <br><br><br>
+    
     <!-- FRONT END...  -->
     
     <div class="container-fluid">
@@ -91,95 +90,38 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
             <div class="col-md-12 w3-animate-zoom">
                 <center>
                     <h1  class="tittle_h1">Wonka Database </span></h1>
+                    <h2>Parameters</h2>
                 </center>
-                <center>
-                    <div class="row">
-		                <div class="col-md-2">
-		                </div>
-		                <div class="col-md-2">
-		                </div>
-		                <div class="col-md-2">
-                        <div class="w3-animate-right"><span id="R"  class=" rotateRefresh glyphicon glyphicon-refresh hvr-grow main_buttons"></div>
-		                </div>
-		                <div class="col-md-2">
-                        <div class="w3-animate-left"><span  class="w3-animate-opacity glyphicon glyphicon-search hvr-grow main_buttons"  class="btn btn-info btn-lg " data-toggle="modal" data-target="#searchModal"></div>
-		                </div>
-		                <div class="col-md-2">
-		                </div>
-		                <div class="col-md-2">
-		                </div>
-	                </div>
-                </center>
+                 <div class=" col-md-4">
+                 
+                 </div>
+                 <div class="well col-md-4">
+                  <h4>Servidor Smpt contraseña.</h4>
+                    <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <style>.field-icon {float: right;margin-left: -25px;margin-top: -25px;position: relative;z-index: 2;}</style>
+                      <input value="<?php echo $_SESSION["smtp_pass"]; ?>" name="password_smtp_update_input" type="password" placeholder="Contraseña" class="form-control input-md" id="password-field" >
+                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input class="w3-button w3-right" type="Submit" name="update_my_smtp_pass" value="OK!" >
+                    </form>
+                  <h4>Servidor smtp.</h4>
+                    <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                      <input value="<?php echo $_SESSION["test_mail"]; ?>" name="smtp_update_input" type="text" placeholder="servidor smtp" class="form-control input-md">
+                      <input class="w3-button w3-right" type="Submit" name="update_my_smtp_server" value="OK!" >
+                    </form>
+                  <h4>Correo Test.</h4>
+                    <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                      <input value="<?php echo $_SESSION["smtp_server"]; ?>" name="test_smtp_update_input" type="text" placeholder="mail" class="form-control input-md">
+                      <input class="w3-button w3-right" type="Submit" name="update_my_test_mail" value="OK!" >
+                    </form>
+                    <br><br><br><br>
+                 </div>
+
+                 <div class=" col-md-4">
+                 </div>
             </div>
         </div>
-        <br>
-          <p class="w3-animate-left"> <?php
-          $DATAROWNUM= count($data);
-          $time=((($DATAROWNUM/20)*5)/60);
-          if(!empty($_SESSION["i_have_searched_bruh"])){
-            if(count($data)==0){
-              echo"No se han encontrado resultados :(";
-            }else{
-              echo "Seleccionados ".count($data)." resultados";
-              
-             
-            }
-          }
-          ?> 
-          </p>
-          <!-- EMPIEZA BOTON EMAIL !-->
-            <?php
-            $blockMoreThan500="style='display:none';";
-             if(!empty($_SESSION["i_have_searched_bruh"])){
-              echo"<div class='w3-right w3-animate-right'><a href=''class='mail_button hvr-bounce-to-bottom2 nav_bar_button'  data-toggle='modal' data-target='#email_this'>&nbsp; Mail&nbsp; <span class='glyphicon glyphicon-send'>&nbsp;</span></a></div>";}?>
-            <!-- ACABA BOTON EMAIL !-->
-            <?php if(count($data)>500){echo "<div style='width:65%;' class='alert alert-info w3-animate-bottom alert-dismissible'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Atencion!</strong> Se han seleccionado todos los datos pero estos han sido escondidos, puedes mandar un email a esta seleccion, pero no se pueden mostrar mas de 500 lineas en pantalla
-                </div>";} ?>
-      <table class="table  w3-animate-bottom" <?php if(count($data)>500){echo $blockMoreThan500;} ?>
-    <thead>
-      <tr>
-        <?php
-        if(!empty($_SESSION["i_have_searched_bruh"])){
-          echo"<th class='Nombre_t'>Nombre <span id='N' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Apellido_t'>Apellido <span id='A' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Email_t'>Email <span id='E' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Telefono_t'>Telefono <span id='T' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Dni_t'>Dni <span id='D' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Birthdate_t'>Nacimiento <span id='B' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>
-          <th class='Comment_t'>Evento <span id='C' style='cursor: pointer' class='glyphicon glyphicon-eye-close'></span></p></th>";
-        }
-        ?>
-      </tr>
-    </thead>
-    <tbody>
-    <?php
-    foreach($data as $row){?>
-        <tr> 
-            <td class="Nombre_a"> <?=$row['Nombre']?></td>
-            <td class="Apellido_a"> <?=$row['Apellido']?></td>
-            <td class="Email_a"> <?=$row['Email']?><div class="dropdown"></td>
-            <td class="Telefono_a"> <?=$row['Telefono']?></td>
-            <td class="Dni_a"> <?=$row['Dni']?></td>
-            <td class="Birthdate_a"> <?=$row['Birthdate']?></td>
-            <td class="Comment_a"> <?=$row['Comment']?><br>
-                  <div class="dropdown">
-                    <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown">Opciones
-                     <span class="caret"></span></button>
-                       <ul class="dropdown-menu">
-                         <li><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                         <input type="hidden" id="custId" name="Unsuscribe_user_mail" value="<?=$row['Email']?>">
-                          <input class="w3-button" type="Submit" name="Unsuscribe" value="Dar de baja"></span>
-                          </form>
-                         
-                       </ul>
-                    </div>
-            </td>
-          </tr> 
-     <?php } ?> 
-    </tbody>
-    </table>
+        
+         
     
     </div>
 
@@ -300,7 +242,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
             <div class="col-md-4">
               <select id="selectbasic" name="modality" class="form-control">
                 <option value="runners">Corredor</option>
-                <option value="juvenilerunners">Corredor Infantil</option>
+                <option value="juvenilerunners">Corredor Infatil</option>
                 <option value="volunteers">Voluntario</option>
               </select>
             </div>
@@ -377,7 +319,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
             <div class="o-circle c-container__circle o-circle__sign--failure">
               <div class="o-circle__sign"></div>  
             </div>   
-            <p>La contraseña no puede estar vacia.</p>
+            <p>El campo no puede estar vacio.</p>
         </section>
       </div>
       <div class="modal-footer">
@@ -449,7 +391,7 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
             <div class="o-circle c-container__circle o-circle__sign--success">
               <div class="o-circle__sign"></div>  
             </div>   
-            <p>Tu contraseña se ha modificado correctamente</p>
+            <p>OK!, se ha modificado correctamente!</p>
         </section>
       </div>
       <div class="modal-footer">
@@ -506,24 +448,6 @@ $user_darkMode_new = $pdo->query("SELECT `dark` FROM `wonka_user` WHERE `usernam
           </div>
           </fieldset>
         </form>
-        <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-          <fieldset>
-
-          <!-- Form Name -->
-      
-          <!-- Password input-->
-          <div class="form-group">
-            
-            <label class="col-md-4 control-label" for="passwordinput">Parametros</label>
-            <div class="col-md-4">
-              <!-- Rounded switch -->
-                
-                <input class="w3-button w3-right" type="Submit" name="parameters" value="configurar" >
-            </div>
-          </div>
-          </fieldset>
-        </form>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -654,6 +578,16 @@ window.addEventListener("load", function(){
 	
   document.body.removeChild(load_screen);
   
+});
+$(".toggle-password").click(function() {
+
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
 });
 </script>
 

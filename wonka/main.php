@@ -2,8 +2,18 @@
 
 // conexión con base de datos
 require_once("util/functions.php");  
-require_once("util/db_manager.php"); 
+require_once("util/db_manager.php");
+$connectme = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $_SESSION["i_have_searched_bruh"]="";
+$parameters = $connectme->query("SELECT * FROM `parametres` limit 1")->fetchAll();
+$_SESSION["parameters"]=$parameters;
+foreach ($_SESSION["parameters"] as $parametritos){  
+            $_SESSION["smtp_pass"]=$parametritos['smtp_password'];
+            $_SESSION["test_mail"]=$parametritos['test_mail'];
+            $_SESSION["smtp_server"]=$parametritos['smtp_server'];
+            $smtp_server_variable=$_SESSION['smtp_server'];
+            global $smtp_server_variable;}
+
 
 //get messages XD  
 $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -33,8 +43,7 @@ $data = $pdo->query("SELECT * FROM `runners` LIMIT 0")->fetchAll();
     //LINEAS
         $LIMIT=$_POST['RowNumber'];
         $CurrentLIMIT="limit $LIMIT";
-        if(count($data>500)){$blockMoreThan500="style='display:none';";
-            }
+        
 // MULTIPLES CODICIONES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // QUERY ADULTO SI NO ESTA VACIO
@@ -100,11 +109,10 @@ $_SESSION["data"]=$data;
 // https://blog.fossasia.org/import-excel-file-data-in-mysql-database-using-php/
 
 $modalScript7 = "<script>
-    $( document ).ready(function() {
-        $('#login_failed').modal({show:true});
-    });
-    //</script>";
-    
+        $( document ).ready(function() {
+            $('#login_failed').modal({show:true});
+        });
+        //</script>"; 
 //_____                     _                              
 //(____ \       _           (_)                        _    
 // _   \ \ ____| |_  ____    _ ____  ____   ___   ____| |_  
@@ -174,6 +182,17 @@ if (isset($_POST['Log_me_in'])) {
 
 
 }
+
+
+
+// parametres
+if (isset($_POST['parameters'])) {
+   
+
+    header('Location: parametres.php');
+
+
+}
 // LOG OUT
 if (isset($_POST['Log_me_out'])) {
    
@@ -228,7 +247,56 @@ if (isset($_POST['update_my_pass'])) {
     echo $modalSuccess2;
     }
 }
-
+//UPDATE PASS
+if (isset($_POST['update_my_smtp_pass'])) {
+    
+    
+    if(empty($_POST['password_smtp_update_input'])){
+     $modalSuccess = "<script> $( document ).ready(function() { $('#empty_pass').modal({show:true});})</script>";
+     echo $modalSuccess;
+    }else{
+     $new_edited_password_smtp=$_POST['password_smtp_update_input'];
+     update_my_smtp_password($new_edited_password_smtp);
+     $modalSuccess2 = "<script> $( document ).ready(function() { $('#successfull_pass').modal({show:true});})</script>";
+     
+     header('Location: parametres.php');
+     echo $modalSuccess2;
+     }
+     
+ }
+ //UPDATE PASS
+if (isset($_POST['update_my_smtp_server'])) {
+    
+    
+    if(empty($_POST['smtp_update_input'])){
+     $modalSuccess = "<script> $( document ).ready(function() { $('#empty_pass').modal({show:true});})</script>";
+     echo $modalSuccess;
+    }else{
+     $new_edited_server_smtp=$_POST['smtp_update_input'];
+     update_my_smtp_test($new_edited_server_smtp);
+     $modalSuccess2 = "<script> $( document ).ready(function() { $('#successfull_pass').modal({show:true});})</script>";
+     
+     header('Location: parametres.php');
+     echo $modalSuccess2;
+     }
+     
+ }
+  //UPDATE PASS
+if (isset($_POST['update_my_test_mail'])) {
+    
+    
+    if(empty($_POST['test_smtp_update_input'])){
+     $modalSuccess = "<script> $( document ).ready(function() { $('#empty_pass').modal({show:true});})</script>";
+     echo $modalSuccess;
+    }else{
+     $new_edited_server_test_smtp=$_POST['test_smtp_update_input'];
+     update_my_smtp_server($new_edited_server_test_smtp);
+     $modalSuccess2 = "<script> $( document ).ready(function() { $('#successfull_pass').modal({show:true});})</script>";
+     
+     header('Location: parametres.php');
+     echo $modalSuccess2;
+     }
+ }
 if(!isset($_SESSION["Has_been_all_a_test"])&& @$_SESSION["Has_been_all_a_test"]!=="1"){
   // VARIABLES PARA LA TESTEASION
   $_SESSION["Email_Subject"]="";
@@ -296,8 +364,9 @@ if (isset($_POST['email_SEND'])) {
     if(!empty($_POST['Stop_this_is_a_test'])){
         foreach($_SESSION["data"] as $contact){}
         $subject=$_POST['Email_Subject'];
-        $name="test.wonka.sample@gmail.com";
+        $name= $_SESSION['smtp_server'];
         $email="Wonka";
+        $contact='';
         require("src/Mail_test.php");
         sendEmail($email, $name,$message_test,$subject);
         $_SESSION["Has_been_all_a_test"]="1";   
@@ -323,20 +392,23 @@ if (isset($_POST['email_SEND'])) {
 
 
  
+ 
 // Envia emails.
 function sendEmail($email, $name,$message,$subject) {
+    global $smtp_server_variable;
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     //debug para errorsillos
     $mail->SMTPDebug = 0;                               
     // es stmp? mmmh?...
     $mail->isSMTP();            
     //el host                           
-    $mail->Host = 'send.one.com';
+    $mail->Host =$_SESSION['test_mail'] ;
+    
     // necesita autenticarse-- por defecto le pongo true
     $mail->SMTPAuth = true;                          
     //el user y la pass 
     $mail->Username = 'info@wonkaproducciones.com';
-    $mail->Password = 'onewillywonka';                          
+    $mail->Password =$_SESSION['smtp_pass'];                          
      
     $mail->CharSet = 'UTF-8';                      
     //esto es el puerto 
@@ -383,7 +455,6 @@ function sendEmail($email, $name,$message,$subject) {
 
  
 
- 
 
  
 

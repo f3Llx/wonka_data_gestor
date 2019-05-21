@@ -62,6 +62,63 @@ function update_my_password($username_id, $new_edited_password) {
     
     $conn = null;
 }
+//Actualiza la contraseña smtp.
+function update_my_smtp_password( $new_edited_password_smtp) {
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = 'wonka_main';
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $sql_insertCurrent_info = "UPDATE `parametres` SET `smtp_password` = '$new_edited_password_smtp' ;";
+        $conn->exec($sql_insertCurrent_info);
+
+        }
+    catch(PDOException $e)
+        {
+        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
+}
+//Actualiza la smtp server.
+function update_my_smtp_server( $new_edited_server_smtp) {
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = 'wonka_main';
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $sql_insertCurrent_info = "UPDATE `parametres` SET `smtp_server` = '$new_edited_server_smtp' ;";
+        $conn->exec($sql_insertCurrent_info);
+
+        }
+    catch(PDOException $e)
+        {
+        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
+}
+//Actualiza el correo test
+function update_my_smtp_test( $new_edited_server_test_smtp) {
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = 'wonka_main';
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $sql_insertCurrent_info = "UPDATE `parametres` SET `test_mail` = '$new_edited_server_test_smtp' ;";
+        $conn->exec($sql_insertCurrent_info);
+
+        }
+    catch(PDOException $e)
+        {
+        echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
+}
 //Actualiza el modo oscuro.
 function update_my_dark($username_id, $dark_mode) {
     try {
