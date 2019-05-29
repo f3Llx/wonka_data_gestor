@@ -333,6 +333,9 @@ if (isset($_POST['email_SEND'])) {
    
    //Mail_Subscribe_LINK
    $Mail_Subscribe_LINK=$_POST['Mail_Subscribe_LINK'];
+   if (empty($_POST['Mail_Subscribe_LINK'])){
+       $link_is_empty=1;
+   }else{$link_is_empty=0;}
    
    //Mail_Main_TEXT
    $Mail_Main_TEXT=$_POST['Mail_Main_TEXT'];
@@ -351,7 +354,10 @@ if (isset($_POST['email_SEND'])) {
    if(empty($_POST['Stop_this_is_a_test'])){
     foreach($_SESSION["data"] as $contact){
         $email="";
-        require("src/Mail.php");
+        if($link_is_empty===1){
+            require("src/Mail_no_inscription.php");
+            }else{require("src/Mail.php");}
+        
         $subject=$_POST['Email_Subject'];
         sendEmail($contact['Nombre'], $contact['Email'], $message,$subject);
         if ($contact > 0 && $contact % 10 == 0) {
@@ -367,7 +373,10 @@ if (isset($_POST['email_SEND'])) {
         $name= $_SESSION['smtp_server'];
         $email="Wonka";
         $contact='';
-        require("src/Mail_test.php");
+        if($link_is_empty===1){
+        require("src/Mail_test_no_inscription.php");
+        }else{require("src/Mail_test.php");}
+        
         sendEmail($email, $name,$message_test,$subject);
         $_SESSION["Has_been_all_a_test"]="1";   
         $_SESSION["Email_Subject"]=$Email_Subject;

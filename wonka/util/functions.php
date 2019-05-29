@@ -78,7 +78,7 @@ function update_my_smtp_password( $new_edited_password_smtp) {
         {
         echo $sql_insertCurrent_info . "<br>" . $e->getMessage();
         }
-    
+
     $conn = null;
 }
 //Actualiza la smtp server.
